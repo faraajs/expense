@@ -1,0 +1,14 @@
+Expense third-party notices
+
+Expense application source: MIT, Copyright (c) 2026 Expense contributors.
+AndroidX, Compose, Room, WorkManager, Security Crypto, Kotlin, kotlinx.coroutines,
+OkHttp, Okio, Tink, and Gradle Wrapper are licensed under Apache License 2.0.
+These components remain copyright their respective upstream authors.
+The complete Apache License 2.0 is included as Apache-2.0.txt in this directory.
+The bundled Public Suffix List data is licensed under MPL-2.0; see MPL-2.0.txt,
+OkHttp-Public-Suffix-NOTICE.txt, and the editable public_suffix_list.dat here.
+The Protobuf Java Lite runtime shaded into Tink is under the BSD-3-Clause
+license reproduced in Protobuf-BSD-3-Clause.txt.
+See the source repository docs/THIRD-PARTY-NOTICES.md for component versions,
+upstream license links, and build/test-only dependencies.
+https://github.com/faraajs/expense

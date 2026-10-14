@@ -1,0 +1,32 @@
+# Generated Android/Gradle output
+.gradle/
+.kotlin/
+.idea/
+*.iml
+.verification/
+**/build/
+.cxx/
+.externalNativeBuild/
+local.properties
+local.properties.*
+# Signing material and local credentials
+*.jks
+*.keystore
+*.p12
+*.pem
+.env
+.env.*
+# Private financial data and generated release artifacts
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.ab
+/backups/
+/data/
+/deliver/
+/dist/
+*.apk
+*.aab
+*.log
+.DS_Store

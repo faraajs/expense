@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- White so logo ring (green/red) stays clean on adaptive icon mask -->
+    <color name="launcher_background">#FFFFFF</color>
+    <color name="launcher_foreground">#0F172A</color>
+</resources>
