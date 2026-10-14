@@ -10,6 +10,8 @@
 
 [Halaman rilis 0.4.2](https://github.com/faraajs/expense/releases/tag/v0.4.2) · [Rilis terbaru](https://github.com/faraajs/expense/releases/latest)
 
+[Unduh source 0.4.2 (tar.gz)](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-source.tar.gz) · [Checksum SHA-256](https://github.com/faraajs/expense/releases/download/v0.4.2/SHA256SUMS.txt)
+
 Expense adalah pencatat pemasukan/pengeluaran Android dengan parser notifikasi bank dan dompet digital. Ini publikasi **aplikasi Expense asli**, bukan UI Lab. Android 8.0 / API 26 atau lebih baru diperlukan.
 
 ## Fitur

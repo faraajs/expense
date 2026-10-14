@@ -13,7 +13,7 @@
 
 **Pembaruan:** ekspor transaksi JSON dahulu, lalu pasang di atas 0.4.1. Jangan uninstall atau hapus data untuk memperbarui. [Unduh APK 0.4.2](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk).
 
-Catatan ini tidak menyatakan build/test/smoke sudah lulus, dan tidak mengklaim panggilan AI langsung terverifikasi. Bukti hasil yang benar-benar dijalankan dicatat pada [halaman rilis](https://github.com/faraajs/expense/releases/tag/v0.4.2).
+Build release, build debug dari arsip source bersih, dan 50 unit test lulus. Smoke emulator mencakup update tanpa kehilangan transaksi sintetis, instalasi kosong, ingest/deduplikasi notifikasi, perlindungan key intent, dan ekspor JSON. Rincian serta batas pengujian ada di [catatan verifikasi](docs/RECOVERY-NOTES.md#verifikasi-042); panggilan AI dengan key valid dan perangkat fisik belum diuji.
 
 ## 0.4.1 — referensi pemulihan
 

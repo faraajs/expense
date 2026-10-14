@@ -20,4 +20,16 @@ Database pengguna, ekspor/cadangan pribadi, signing key, password, API key, dan 
 
 MIT dipilih untuk source asli Expense; notice dan lisensi upstream tetap berlaku seperti dijelaskan pada [third-party notices](THIRD-PARTY-NOTICES.md). Source pemulihan bukan alasan untuk menimpa atau menghapus data instalasi lama: ekspor JSON terlebih dahulu lalu pasang APK resmi sebagai pembaruan, bukan uninstall.
 
-Catatan ini mendokumentasikan asal dan batas pemulihan, bukan hasil pengujian. Bukti build, unit test, dan smoke test hanya dapat dinyatakan setelah benar-benar dijalankan; lihat [halaman rilis](https://github.com/faraajs/expense/releases) untuk bukti yang dipublikasikan.
+## Verifikasi 0.4.2
+
+- `:app:assembleRelease` berhasil dengan JDK 17, Gradle 9.4.1, dan AGP 9.2.1.
+- 50 unit test lulus, tanpa failure/error/skip: parser, analitik, ekspor, dan impor.
+- APK lolos `apksigner verify`; sertifikat SHA-256 sama dengan APK 0.4.1: `d12d80aacf5249420ed180ab5d73df8c91198361e4a9b2d96a45cad6f6da33aa`.
+- Emulator Android 11 / API 30: memasang 0.4.2 di atas APK 0.4.1 berhasil tanpa uninstall. Dua transaksi sintetis tetap identik untuk setiap kolom; identity hash Room v2 tidak berubah.
+- Key sintetis terenkripsi tetap utuh setelah update. Extra `gemini_api_key` pada warm launch dan `openrouter_api_key` pada cold launch tidak mengubah isi preference terenkripsi.
+- APK diperiksa untuk ketiadaan importer/nama seed pribadi, database, dan keystore; aset lisensi pihak ketiga disertakan.
+- Source hasil `git archive` juga berhasil dibangun dengan `:app:assembleDebug --offline`, tanpa konfigurasi signing lokal.
+- Instalasi baru 0.4.2 memiliki database kosong. Notifikasi sintetis diterima melalui listener Android; duplikat tidak menambah transaksi dan OTP diabaikan. Logcat hanya mencatat status, bukan isi transaksi.
+- Input API key dimasking dan penyimpanan melalui UI berhasil dengan key sintetis. Ekspor JSON melalui UI menghasilkan empat transaksi sintetis yang sesuai database, tanpa `rawText`. Share sheet emulator tidak memiliki aplikasi penerima; pengiriman ke aplikasi lain belum diuji.
+
+Pengujian ini memakai emulator dan data sintetis, bukan database/HP pribadi. Panggilan Gemini dengan API key valid serta pengujian perangkat fisik belum dilakukan. Ini tidak menjamin format notifikasi semua bank/OEM didukung.
