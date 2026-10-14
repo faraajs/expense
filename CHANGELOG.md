@@ -2,6 +2,13 @@
 
 [Kembali ke README](README.md)
 
+## Belum dirilis
+
+- Menambahkan Android CI: unit test, build debug, dan lint dengan JDK 17/SDK 36; laporan dan APK debug bukan artefak rilis resmi. Memverifikasi distribusi Gradle Wrapper dengan SHA-256 yang dipin.
+- Menambahkan CodeQL Java/Kotlin dengan build debug terlacak (mode tanpa build tidak menganalisis Kotlin), Dependabot mingguan tanpa auto-merge, CODEOWNERS, serta template issue/PR.
+- Menambahkan kebijakan keamanan untuk rilis stabil terbaru dan pelaporan privat; melarang notifikasi bank asli, ledger pribadi, serta rahasia pada issue publik.
+- Mendokumentasikan batas CI versus verifikasi manual dan cakupan ABI APK 0.4.2. Mempertahankan applicationId, namespace, dan identitas komponen `com.example.autospending` demi data ledger, widget, serta grant notification listener; tidak mengubah versi, dependency, signing, atau perilaku aplikasi.
+
 ## 0.4.2
 
 - Publikasi source Expense asli dalam repository bersih dengan lisensi MIT, dokumentasi build, privasi, notice pihak ketiga, dan catatan provenance.

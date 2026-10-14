@@ -3,6 +3,7 @@
 [![Rilis terbaru](https://img.shields.io/github/v/release/faraajs/expense)](https://github.com/faraajs/expense/releases/latest)
 [![Source: MIT](https://img.shields.io/badge/source-MIT-green.svg)](LICENSE)
 [![Android 8+](https://img.shields.io/badge/Android-8%2B%20(API%2026)-blue.svg)](docs/BUILD-FROM-SOURCE.md)
+[![Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml/badge.svg)](https://github.com/faraajs/expense/actions/workflows/android.yml)
 
 ## Unduh APK
 
@@ -35,6 +36,8 @@ Ledger dan parser dasar berjalan tanpa internet. Gemini memerlukan internet, key
 
 Jika Android menolak pembaruan karena sertifikat berbeda, jangan uninstall untuk memaksa pemasangan: periksa sumber APK terlebih dahulu. Build sendiri dengan key lain tidak dapat menggantikan APK resmi.
 
+`applicationId` dan namespace source tetap **`com.example.autospending`**, bukan diganti menjadi nama baru demi branding. Identitas yang sudah dirilis ini menjaga hubungan instalasi dengan data ledger, widget, FileProvider, serta komponen/grant akses notification listener. Nama kelas/paket komponen Android juga dipertahankan; namespace bukan sekadar label aplikasi.
+
 ## Privasi
 
 APK publik tidak menyertakan transaksi pengguna, database/cadangan pribadi, maupun API key bawaan. Data ledger disimpan lokal; tidak berarti database terenkripsi. Saat Anda memakai Tanya AI, pertanyaan **dan ringkasan ledger bulanan berbentuk baris transaksi** dikirim ke Google. Baca [privasi dan izin](docs/PRIVACY.md) sebelum mengaktifkannya.
@@ -43,8 +46,17 @@ APK publik tidak menyertakan transaksi pengguna, database/cadangan pribadi, maup
 
 - [Build dari source, SDK, dan signing](docs/BUILD-FROM-SOURCE.md)
 - [Privasi](docs/PRIVACY.md)
+- [Kebijakan keamanan dan pelaporan privat](SECURITY.md)
 - [Changelog](CHANGELOG.md)
 - [Asal source dan pemulihan](docs/RECOVERY-NOTES.md)
 - [Lisensi MIT](LICENSE) · [Lisensi pihak ketiga](docs/THIRD-PARTY-NOTICES.md)
 
 Lisensi MIT berlaku untuk source asli Expense, bukan pelisensian ulang dependency. Rilis publik menambahkan sanitasi privasi untuk publikasi; source tidak menjanjikan rekonstruksi APK lama secara bit-for-bit.
+
+## CI dan kontribusi
+
+[Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml) menjalankan unit test nyata, build APK debug, dan Android Lint pada push `main`, pull request, atau pemicu manual. Laporan dan APK debug tersedia sebagai artefak run; APK itu **bukan rilis resmi** dan tidak dapat memperbarui APK resmi dengan sertifikat berbeda. Badge hanya menunjukkan status run terkait, bukan bukti semua fitur sudah diuji.
+
+[CodeQL](https://github.com/faraajs/expense/actions/workflows/codeql.yml) menganalisis Java/Kotlin melalui build debug terlacak; Dependabot mengusulkan pembaruan Gradle dan GitHub Actions mingguan tanpa auto-merge. CI tidak menjalankan uji perangkat/emulator, akses notifikasi bank nyata, update yang mempertahankan data/grant, widget, atau Gemini dengan key valid. Bedakan bukti manual historis 0.4.2 dari hasil CI pada commit saat ini; lihat [cakupan dan perintah verifikasi](docs/BUILD-FROM-SOURCE.md#ci-dan-verifikasi-manual).
+
+Gunakan template issue/PR dengan **data sintetis saja**, bukan notifikasi bank asli, ledger/ekspor pribadi, atau rahasia. Kerentanan dilaporkan [secara privat](SECURITY.md).
