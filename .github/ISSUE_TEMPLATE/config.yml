@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Laporkan kerentanan secara privat
+    url: https://github.com/faraajs/expense/security/advisories/new
+    about: Jangan sertakan notifikasi bank asli, ledger, API key, atau rahasia di issue publik.
