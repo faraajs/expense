@@ -28,7 +28,7 @@ fun TypeToggle(
         FilterChip(
             selected = selectedType == "expense",
             onClick = { onTypeChange("expense") },
-            label = { Text("Keluar") },
+            label = { Text("Expense") },
             colors = FilterChipDefaults.filterChipColors(
                 selectedContainerColor = ExpenseRedSoft,
                 selectedLabelColor = ExpenseRed,
@@ -44,7 +44,7 @@ fun TypeToggle(
         FilterChip(
             selected = selectedType == "income",
             onClick = { onTypeChange("income") },
-            label = { Text("Masuk") },
+            label = { Text("Income") },
             colors = FilterChipDefaults.filterChipColors(
                 selectedContainerColor = IncomeGreenSoft,
                 selectedLabelColor = IncomeGreen,

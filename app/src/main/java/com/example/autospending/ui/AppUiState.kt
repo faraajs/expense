@@ -30,9 +30,9 @@ data class AppUiState(
 
     val budgetStatusLabel: String
         get() = when (budgetRing.status) {
-            BudgetStatus.UNSET -> "Belum diset"
-            BudgetStatus.AMAN -> "Aman"
-            BudgetStatus.HATI_HATI -> "Hati-hati"
-            BudgetStatus.OVER -> "Over"
+            BudgetStatus.UNSET -> "Not set"
+            BudgetStatus.AMAN -> "Safe"
+            BudgetStatus.HATI_HATI -> "Caution"
+            BudgetStatus.OVER -> "Over budget"
         }
 }

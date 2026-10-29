@@ -9,7 +9,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 /**
- * Gemini generateContent client — network only, no UI/ViewModel state.
+ * Gemini generateContent client. Network only, with no UI/ViewModel state.
  */
 class GeminiClient {
     suspend fun generate(apiKey: String, prompt: String): String = withContext(Dispatchers.IO) {
@@ -28,7 +28,7 @@ class GeminiClient {
             }
             errors += "$model: ${result.exceptionOrNull()?.message}"
         }
-        "Gagal memanggil Gemini. Cek API key AI Studio / kuota / koneksi.\n" +
+        "Gemini request failed. Check your AI Studio API key, quota, and connection.\n" +
             errors.joinToString("\n") { it.take(280) }
     }
 

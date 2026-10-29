@@ -62,7 +62,7 @@ fun BudgetRing(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                "Budget bulan ini",
+                "This month's budget",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -111,15 +111,15 @@ fun BudgetRing(
                 }
             }
             val statusText = when (model.status) {
-                BudgetStatus.UNSET -> "Status: Belum diset"
-                BudgetStatus.AMAN -> "Status: Aman"
-                BudgetStatus.HATI_HATI -> "Status: Hati-hati"
-                BudgetStatus.OVER -> "Status: Over"
+                BudgetStatus.UNSET -> "Status: Not set"
+                BudgetStatus.AMAN -> "Status: Safe"
+                BudgetStatus.HATI_HATI -> "Status: Caution"
+                BudgetStatus.OVER -> "Status: Over budget"
             }
             Text(statusText, style = MaterialTheme.typography.bodyMedium)
             model.overPercent?.let {
                 Text(
-                    "+$it% di atas budget",
+                    "+$it% over budget",
                     color = ExpenseRed,
                     fontWeight = FontWeight.SemiBold
                 )

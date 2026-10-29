@@ -5,7 +5,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
- * Raw notification log — Phase 0 diagnostic.
+ * Raw notification log for Phase 0 diagnostics.
  * Every whitelisted notification (and optionally all packages if diagnostic_log_all=true)
  * is written here before parser runs. Rows older than 21 days are auto-purged by RawLogPurgeWorker.
  */

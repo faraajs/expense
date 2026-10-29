@@ -86,8 +86,8 @@ fun AuditScreen(
                 ) {
                     Text("Backup data", fontWeight = FontWeight.SemiBold)
                     Text(
-                        "Export semua transaksi ke JSON (siap disimpan ke Drive/USB). " +
-                            "Penting untuk dual-boot / ganti HP.",
+                        "Export all transactions to JSON (ready to save to Drive/USB). " +
+                            "Important when dual-booting or changing phones.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -96,7 +96,7 @@ fun AuditScreen(
                         enabled = !isExporting,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(if (isExporting) "Menyiapkan export…" else "Export JSON")
+                        Text(if (isExporting) "Preparing export…" else "Export JSON")
                     }
                     OutlinedButton(
                         onClick = onImport,
@@ -105,10 +105,10 @@ fun AuditScreen(
                         Text("Import JSON")
                     }
                     TextButton(onClick = onOpenRawLog, modifier = Modifier.fillMaxWidth()) {
-                        Text("📋 Raw log notifikasi →")
+                        Text("📋 Raw notification log →")
                     }
                     TextButton(onClick = onOpenOemBattery, modifier = Modifier.fillMaxWidth()) {
-                        Text("🔋 Panduan baterai OEM →")
+                        Text("🔋 OEM battery guide →")
                     }
                 }
             }
@@ -124,37 +124,37 @@ fun AuditScreen(
                     Modifier.padding(14.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Text("Notifikasi & parser", fontWeight = FontWeight.SemiBold)
+                    Text("Notifications and parser", fontWeight = FontWeight.SemiBold)
                     Row(
                         Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            if (hasNotificationAccess) "✅ Akses notifikasi aktif"
-                            else "❌ Akses notifikasi belum aktif",
+                            if (hasNotificationAccess) "✅ Notification access enabled"
+                            else "❌ Notification access not enabled",
                             style = MaterialTheme.typography.bodyMedium
                         )
                         if (!hasNotificationAccess) {
-                            TextButton(onClick = onOpenNotificationAccess) { Text("Aktifkan") }
+                            TextButton(onClick = onOpenNotificationAccess) { Text("Enable") }
                         }
                     }
                     HorizontalDivider()
                     SettingsRow(
-                        title = "Parser aktif",
-                        subtitle = "Matikan = hanya skip parse (mode aman)",
+                        title = "Parser enabled",
+                        subtitle = "Disable = skip parsing only (safe mode)",
                         checked = parsersEnabled,
                         onCheckedChange = onToggleParsers
                     )
                     SettingsRow(
-                        title = "Log semua package",
-                        subtitle = "Diagnostik: rekam paket non-whitelist",
+                        title = "Log all packages",
+                        subtitle = "Diagnostics: record non-whitelisted packages",
                         checked = diagnosticLogAll,
                         onCheckedChange = onToggleDiagnosticLog
                     )
                     Text(
-                        if (healthSnapshot.listenerConnected) "🟢 Listener terhubung"
-                        else "🔴 Listener terputus",
+                        if (healthSnapshot.listenerConnected) "🟢 Listener connected"
+                        else "🔴 Listener disconnected",
                         style = MaterialTheme.typography.bodySmall
                     )
                     healthSnapshot.packages.take(8).forEach { pkg ->
@@ -178,7 +178,7 @@ fun AuditScreen(
                     Modifier.padding(14.dp),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    Text("Gemini API key (terenkripsi)", fontWeight = FontWeight.SemiBold)
+                    Text("Gemini API key (encrypted)", fontWeight = FontWeight.SemiBold)
                     OutlinedTextField(
                         value = apiKeyDraft,
                         onValueChange = { apiKeyDraft = it },
@@ -195,11 +195,11 @@ fun AuditScreen(
                         Button(
                             onClick = { onSaveApiKey(apiKeyDraft) },
                             enabled = apiKeyDraft.trim().isNotBlank()
-                        ) { Text("Simpan") }
+                        ) { Text("Save") }
                         OutlinedButton(onClick = {
                             apiKeyDraft = ""
                             onClearApiKey()
-                        }) { Text("Hapus") }
+                        }) { Text("Clear") }
                         TextButton(onClick = { showKey = !showKey }) {
                             Text(if (showKey) "Sembunyikan" else "Tampilkan")
                         }
@@ -211,7 +211,7 @@ fun AuditScreen(
         item {
             Spacer(Modifier.height(4.dp))
             Text(
-                "Raw transaksi bulan ini",
+                "Raw transactions this month",
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.SemiBold
             )
@@ -220,17 +220,17 @@ fun AuditScreen(
         if (rows.isEmpty()) {
             item {
                 EmptyState(
-                    title = "Belum ada data",
-                    message = "Transaksi otomatis muncul setelah notifikasi bank/e-wallet dibaca."
+                    title = "No data yet",
+                    message = "Transactions appear automatically after bank or digital wallet notifications are read."
                 )
             }
         } else {
             items(rows, key = { it.id }) { transaction ->
                 val conf = transaction.confidence
                 val confLabel = when {
-                    conf >= 0.8f -> "tinggi"
-                    conf >= 0.5f -> "sedang"
-                    else -> "rendah"
+                    conf >= 0.8f -> "high"
+                    conf >= 0.5f -> "medium"
+                    else -> "low"
                 }
                 Card {
                     Column(

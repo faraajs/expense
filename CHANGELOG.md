@@ -1,27 +1,28 @@
 # Changelog
 
-[Kembali ke README](README.md)
+[Back to README](README.md)
 
-## Belum dirilis
+## Unreleased
 
-- Menambahkan Android CI: unit test, build debug, dan lint dengan JDK 17/SDK 36; laporan dan APK debug bukan artefak rilis resmi. Memverifikasi distribusi Gradle Wrapper dengan SHA-256 yang dipin.
-- Menambahkan CodeQL Java/Kotlin dengan build debug terlacak (mode tanpa build tidak menganalisis Kotlin), Dependabot mingguan tanpa auto-merge, CODEOWNERS, serta template issue/PR.
-- Menambahkan kebijakan keamanan untuk rilis stabil terbaru dan pelaporan privat; melarang notifikasi bank asli, ledger pribadi, serta rahasia pada issue publik.
-- Mendokumentasikan batas CI versus verifikasi manual dan cakupan ABI APK 0.4.2. Mempertahankan applicationId, namespace, dan identitas komponen `com.example.autospending` demi data ledger, widget, serta grant notification listener; tidak mengubah versi, dependency, signing, atau perilaku aplikasi.
+- 2026-10-30: Reworded documentation and interface text in English, clarified optional Gemini data sharing, and updated the filter summary test for its new label. Parser rules, storage, permissions and published APKs are unchanged.
+- Added Android CI for unit tests, debug builds, and lint with JDK 17 and SDK 36. Reports and debug APKs are not official release artifacts. Gradle Wrapper distribution integrity is verified with a pinned SHA-256.
+- Added CodeQL Java/Kotlin analysis with a tracked debug build (no-build mode does not analyze Kotlin), weekly Dependabot updates without auto-merge, CODEOWNERS, and issue/PR templates.
+- Added a security policy for the latest stable release and private reporting. Real bank notifications, private ledgers, and secrets are prohibited in public issues.
+- Documented CI versus manual verification limits and the ABI coverage of APK 0.4.2. Preserved the `applicationId`, namespace, and `com.example.autospending` component identity for ledger data, the widget, and notification listener grants. Versions, dependencies, signing, and app behavior were not changed.
 
 ## 0.4.2
 
-- Publikasi source Expense asli dalam repository bersih dengan lisensi MIT, dokumentasi build, privasi, notice pihak ketiga, dan catatan provenance.
-- APK publik tidak menyertakan transaksi/database/cadangan pribadi, key API bawaan, atau signing key di source.
-- Sanitasi source: menghapus importer transaksi riwayat pribadi dan enrichment pribadi yang tidak aktif; menghapus penerimaan key melalui launcher intent; memasking input key; membatasi log ingest ke status/sumber paket, bukan teks transaksi.
-- Tetap `com.example.autospending`; versionCode naik dari 16 ke 17. Rilis resmi menggunakan signing key asli yang sama. Skema Room tetap versi 2.
-- Tidak mengubah publikasi ini menjadi UI Lab. Ledger/parser lokal dan Tanya AI Gemini opsional tetap dibedakan; AI memerlukan key pengguna dan mengirim pertanyaan beserta ringkasan transaksi bulanan ke Google.
-- Mengganti model Gemini 1.5/2.0 yang sudah dihentikan dengan `gemini-2.5-flash` dan `gemini-2.5-flash-lite`; lihat [jadwal resmi Google](https://ai.google.dev/gemini-api/docs/deprecations). Panggilan AI dengan key pengguna belum diverifikasi.
+- Published the original Expense source in a clean repository with the MIT license, build, privacy, and third-party notice documentation, and provenance notes.
+- The public APK contains no private transactions, databases or backups, bundled API key, or signing key from the source.
+- Sanitized the source by removing the inactive private history transaction importer and private enrichment, removing key acceptance through launcher intents, masking key input, and limiting ingest logs to package status and source instead of transaction text.
+- Kept `com.example.autospending`; versionCode increased from 16 to 17. The official release uses the same original signing key. Room schema remains version 2.
+- This publication is not the Lab UI. The local ledger/parser and optional Gemini AI Q&A remain distinct. AI requires the user's key and sends questions together with a monthly transaction summary to Google.
+- Replaced the discontinued Gemini 1.5/2.0 models with `gemini-2.5-flash` and `gemini-2.5-flash-lite`; see the [official Google schedule](https://ai.google.dev/gemini-api/docs/deprecations). AI calls with a user key have not been verified.
 
-**Pembaruan:** ekspor transaksi JSON dahulu, lalu pasang di atas 0.4.1. Jangan uninstall atau hapus data untuk memperbarui. [Unduh APK 0.4.2](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk).
+**Update:** export transactions as JSON first, then install over 0.4.1. Do not uninstall or clear data to update. [Download APK 0.4.2](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk).
 
-Build release, build debug dari arsip source bersih, dan 50 unit test lulus. Smoke emulator mencakup update tanpa kehilangan transaksi sintetis, instalasi kosong, ingest/deduplikasi notifikasi, perlindungan key intent, dan ekspor JSON. Rincian serta batas pengujian ada di [catatan verifikasi](docs/RECOVERY-NOTES.md#verifikasi-042); panggilan AI dengan key valid dan perangkat fisik belum diuji.
+The release build, a debug build from the clean source archive, and 50 unit tests passed. Emulator smoke tests covered updates without loss of synthetic transactions, a fresh installation, notification ingest and deduplication, intent key protection, and JSON export. Details and test limits are in the [verification notes](docs/RECOVERY-NOTES.md#verification-042); AI calls with a valid key and physical device testing were not tested.
 
-## 0.4.1 — referensi pemulihan
+## 0.4.1, recovery reference
 
-APK Expense asli yang menjadi referensi pemulihan source: versionCode 16, paket `com.example.autospending`, referensi VCS `598590ee`. Tidak ada klaim bahwa source yang dipulihkan mereproduksi byte APK tersebut secara identik; lihat [catatan pemulihan](docs/RECOVERY-NOTES.md).
+The original Expense APK used as the source recovery reference: versionCode 16, package `com.example.autospending`, VCS reference `598590ee`. There is no claim that the recovered source reproduces that APK byte for byte; see the [recovery notes](docs/RECOVERY-NOTES.md).

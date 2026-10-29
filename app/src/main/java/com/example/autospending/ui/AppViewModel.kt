@@ -183,13 +183,13 @@ class AppViewModel(
         val trimmed = key.trim()
         secureApiKeyStore.saveApiKey(trimmed)
         _apiKey.value = secureApiKeyStore.getApiKey()
-        emitSnackbar("API key disimpan (terenkripsi)")
+        emitSnackbar("API key saved (encrypted)")
     }
 
     fun clearApiKey() {
         secureApiKeyStore.clearApiKey()
         _apiKey.value = ""
-        emitSnackbar("API key dihapus")
+        emitSnackbar("API key removed")
     }
 
     fun setParsersEnabled(enabled: Boolean) {
@@ -220,10 +220,10 @@ class AppViewModel(
                     "autospending-export-${System.currentTimeMillis()}.json"
                 )
                 file.writeText(json, Charsets.UTF_8)
-                emitSnackbar("Export $count transaksi siap dibagikan")
+                emitSnackbar("Export ready to share: $count transactions")
                 onReady(file)
             } catch (e: Exception) {
-                emitSnackbar("Export gagal: ${e.message?.take(80)}")
+                emitSnackbar("Export failed: ${e.message?.take(80)}")
                 onReady(null)
             } finally {
                 _isExporting.value = false
@@ -236,10 +236,10 @@ class AppViewModel(
             try {
                 val result = repository.importTransactionsJson(json)
                 emitSnackbar(
-                    "Import: ${result.imported} baru, ${result.skipped} skip, ${result.errors} error"
+                    "Import: ${result.imported} new, ${result.skipped} skipped, ${result.errors} errors"
                 )
             } catch (e: Exception) {
-                emitSnackbar("Import gagal: ${e.message?.take(80)}")
+                emitSnackbar("Import failed: ${e.message?.take(80)}")
             }
         }
     }
@@ -250,7 +250,7 @@ class AppViewModel(
         if (apiKey.isBlank()) {
             _chatMessages.value = _chatMessages.value + ChatMessage(
                 ChatRole.Assistant,
-                "Tolong masukkan API Key Gemini (Google AI Studio) dulu di kolom di bawah ya! (AIza...)"
+                "Enter your Gemini API key from Google AI Studio in the field below. (AIza...)"
             )
             return
         }
@@ -288,7 +288,7 @@ class AppViewModel(
     fun addManualTransaction(type: String, amountText: String, merchant: String, category: String) {
         val amount = amountText.toAmountOrNull()
         if (amount == null) {
-            emitSnackbar("Nominal tidak valid")
+            emitSnackbar("Invalid amount")
             return
         }
         val now = nowMillis()
@@ -307,7 +307,7 @@ class AppViewModel(
                     contentHash = "manual-${UUID.randomUUID()}"
                 )
             )
-            emitSnackbar("Transaksi disimpan")
+            emitSnackbar("Transaction saved")
         }
     }
 
@@ -320,7 +320,7 @@ class AppViewModel(
     ) {
         val amount = amountText.toAmountOrNull()
         if (amount == null) {
-            emitSnackbar("Nominal tidak valid")
+            emitSnackbar("Invalid amount")
             return
         }
         viewModelScope.launch {
@@ -332,26 +332,26 @@ class AppViewModel(
                     category = category.trim().ifBlank { "Other" }
                 )
             )
-            emitSnackbar("Transaksi diupdate")
+            emitSnackbar("Transaction updated")
         }
     }
 
     fun deleteTransaction(transaction: TransactionEntity) {
         viewModelScope.launch {
             repository.deleteTransaction(transaction)
-            emitSnackbar("Transaksi dihapus")
+            emitSnackbar("Transaction deleted")
         }
     }
 
     fun setBudget(amountText: String) {
         val amount = amountText.toAmountOrNull()
         if (amount == null) {
-            emitSnackbar("Nominal tidak valid")
+            emitSnackbar("Invalid amount")
             return
         }
         viewModelScope.launch {
             repository.setBudget(month.key, amount)
-            emitSnackbar("Budget diupdate")
+            emitSnackbar("Budget updated")
         }
     }
 

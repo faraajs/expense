@@ -51,7 +51,7 @@ fun RecurringExpensesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { showAdd = true }) {
-                Icon(Icons.Default.Add, contentDescription = "Tambah")
+                Icon(Icons.Default.Add, contentDescription = "Add")
             }
         }
     ) { padding ->
@@ -62,7 +62,7 @@ fun RecurringExpensesScreen(
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)
                 ) {
                     Row(Modifier.padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("Total rutin/bulan", style = MaterialTheme.typography.bodyMedium)
+                        Text("Recurring total / month", style = MaterialTheme.typography.bodyMedium)
                         Text(formatIdr(monthlyTotal), fontWeight = FontWeight.Bold)
                     }
                 }
@@ -74,9 +74,9 @@ fun RecurringExpensesScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("Belum ada pengeluaran rutin", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("No recurring expenses yet", color = MaterialTheme.colorScheme.onSurfaceVariant)
                     Text(
-                        "Tambahkan tagihan bulanan seperti Netflix, Spotify, atau listrik.",
+                        "Add monthly bills such as Netflix, Spotify, or electricity.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.outline
                     )
@@ -116,10 +116,10 @@ private fun RecurringCard(item: RecurringExpenseEntity, onDelete: (RecurringExpe
             Column(Modifier.weight(1f)) {
                 Text(item.name, fontWeight = FontWeight.SemiBold)
                 Text("${item.category} · ${item.frequency}", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                Text(formatIdr(item.amount) + "/bulan", style = MaterialTheme.typography.bodySmall)
+                Text(formatIdr(item.amount) + "/month", style = MaterialTheme.typography.bodySmall)
             }
             IconButton(onClick = { onDelete(item) }) {
-                Icon(Icons.Default.Delete, contentDescription = "Hapus", tint = MaterialTheme.colorScheme.error)
+                Icon(Icons.Default.Delete, contentDescription = "Delete", tint = MaterialTheme.colorScheme.error)
             }
         }
     }
@@ -133,21 +133,21 @@ private fun AddRecurringDialog(onDismiss: () -> Unit, onConfirm: (String, Long, 
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Tambah pengeluaran rutin") },
+        title = { Text("Add recurring expense") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedTextField(
                     value = name, onValueChange = { name = it },
-                    label = { Text("Nama (misal: Netflix)") }, modifier = Modifier.fillMaxWidth(), singleLine = true
+                    label = { Text("Name (for example: Netflix)") }, modifier = Modifier.fillMaxWidth(), singleLine = true
                 )
                 OutlinedTextField(
                     value = amount, onValueChange = { amount = it.filter { c -> c.isDigit() } },
-                    label = { Text("Jumlah (Rp)") }, modifier = Modifier.fillMaxWidth(), singleLine = true,
+                    label = { Text("Amount (Rp)") }, modifier = Modifier.fillMaxWidth(), singleLine = true,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
                 )
                 OutlinedTextField(
                     value = category, onValueChange = { category = it },
-                    label = { Text("Kategori") }, modifier = Modifier.fillMaxWidth(), singleLine = true
+                    label = { Text("Category") }, modifier = Modifier.fillMaxWidth(), singleLine = true
                 )
             }
         },
@@ -155,8 +155,8 @@ private fun AddRecurringDialog(onDismiss: () -> Unit, onConfirm: (String, Long, 
             Button(
                 onClick = { onConfirm(name.trim(), amount.toLongOrNull() ?: 0L, category.trim().ifBlank { "Bills" }) },
                 enabled = name.trim().isNotBlank() && amount.toLongOrNull() != null && (amount.toLongOrNull() ?: 0L) > 0
-            ) { Text("Tambah") }
+            ) { Text("Add") }
         },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Batal") } }
+        dismissButton = { TextButton(onClick = onDismiss) { Text("Cancel") } }
     )
 }

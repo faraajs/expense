@@ -45,7 +45,7 @@ data class DirectionKeywords(
         "uang masuk",
         "kredit",
         "credit",
-        // Avoid bare "masuk" — too many false positives on Indonesian copy.
+        // Avoid bare "masuk" because it causes too many false positives in Indonesian copy.
         "saldo masuk",
         "diterima",
         "menerima",

@@ -71,7 +71,7 @@ fun TanyaAiScreen(
             Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text("Gemini API Key (Google AI Studio)", fontWeight = FontWeight.SemiBold)
                 Text(
-                    "Jawaban AI butuh internet; ringkasan transaksi bulan ini dikirim ke Google Gemini.",
+                    "AI responses require internet access. This month's transaction summary is sent to Google Gemini.",
                     style = MaterialTheme.typography.bodySmall
                 )
                 Row(
@@ -91,7 +91,7 @@ fun TanyaAiScreen(
                         onClick = { onSaveApiKey(apiKeyInput.trim()) },
                         modifier = Modifier.align(Alignment.CenterVertically)
                     ) {
-                        Text("Simpan")
+                        Text("Save")
                     }
                 }
             }
@@ -121,7 +121,7 @@ fun TanyaAiScreen(
                             Text("🤖", style = MaterialTheme.typography.headlineLarge)
                             Spacer(Modifier.height(8.dp))
                             Text(
-                                "Halo! Tanya apa saja tentang keuangan lo bulan ini.",
+                                "Hi! Ask anything about your finances this month.",
                                 fontWeight = FontWeight.Medium,
                                 style = MaterialTheme.typography.bodyMedium
                             )
@@ -146,7 +146,7 @@ fun TanyaAiScreen(
                     ) {
                         Column(Modifier.padding(12.dp)) {
                             Text(
-                                text = if (isUser) "Lo" else "Asisten AI",
+                                text = if (isUser) "You" else "AI assistant",
                                 fontWeight = FontWeight.Bold,
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (isUser) {
@@ -164,7 +164,7 @@ fun TanyaAiScreen(
         }
 
         if (isAiLoading) {
-            Text("AI sedang berpikir & menghitung...", style = MaterialTheme.typography.bodySmall)
+            Text("AI is thinking and calculating...", style = MaterialTheme.typography.bodySmall)
             LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
         }
 
@@ -177,7 +177,7 @@ fun TanyaAiScreen(
             OutlinedTextField(
                 value = userInput,
                 onValueChange = { userInput = it },
-                placeholder = { Text("Tanya asisten keuangan...") },
+                placeholder = { Text("Ask your financial assistant...") },
                 modifier = Modifier.weight(1f),
                 enabled = !isAiLoading
             )
@@ -199,7 +199,7 @@ fun TanyaAiScreen(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = !isAiLoading
             ) {
-                Text("Hapus Riwayat Chat")
+                Text("Clear chat history")
             }
         }
         Spacer(Modifier.height(8.dp))

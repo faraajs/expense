@@ -47,13 +47,13 @@ fun CustomCategoriesScreen(
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = { showAdd = true }) {
-                Icon(Icons.Default.Add, contentDescription = "Tambah")
+                Icon(Icons.Default.Add, contentDescription = "Add")
             }
         }
     ) { padding ->
         Column(Modifier.fillMaxSize().padding(padding)) {
             Text(
-                "Kategori kustom ditambahkan di samping kategori bawaan (Food, Transport, dll).",
+                "Custom categories are added alongside built-in categories (Food, Transport, etc.).",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(16.dp)
@@ -65,7 +65,7 @@ fun CustomCategoriesScreen(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("Belum ada kategori kustom", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text("No custom categories yet", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             } else {
                 LazyColumn(
@@ -93,7 +93,7 @@ fun CustomCategoriesScreen(
                                     }
                                 }
                                 IconButton(onClick = { onDelete(cat) }) {
-                                    Icon(Icons.Default.Delete, contentDescription = "Hapus", tint = MaterialTheme.colorScheme.error)
+                                    Icon(Icons.Default.Delete, contentDescription = "Delete", tint = MaterialTheme.colorScheme.error)
                                 }
                             }
                         }
@@ -111,21 +111,21 @@ fun CustomCategoriesScreen(
 
         AlertDialog(
             onDismissRequest = { showAdd = false },
-            title = { Text("Tambah kategori kustom") },
+            title = { Text("Add custom category") },
             text = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Nama kategori") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                    OutlinedTextField(value = name, onValueChange = { name = it }, label = { Text("Category name") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
                     OutlinedTextField(value = emoji, onValueChange = { emoji = it.take(2) }, label = { Text("Emoji") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
-                    OutlinedTextField(value = keywords, onValueChange = { keywords = it }, label = { Text("Keywords (pisah spasi)") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+                    OutlinedTextField(value = keywords, onValueChange = { keywords = it }, label = { Text("Keywords (space separated)") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
                 }
             },
             confirmButton = {
                 Button(
                     onClick = { onAdd(name.trim(), emoji.trim().ifBlank { "💳" }, keywords.trim()); showAdd = false },
                     enabled = name.trim().isNotBlank()
-                ) { Text("Tambah") }
+                ) { Text("Add") }
             },
-            dismissButton = { TextButton(onClick = { showAdd = false }) { Text("Batal") } }
+            dismissButton = { TextButton(onClick = { showAdd = false }) { Text("Cancel") } }
         )
     }
 }

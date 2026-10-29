@@ -57,7 +57,7 @@ fun TransactionListItem(
                     color = amountColor
                 )
             }
-            Text("${transaction.category} - ${formatDateTime(transaction.occurredAt)}")
+            Text("${transaction.category} · ${formatDateTime(transaction.occurredAt)}")
             Text(
                 "Source: ${transaction.sourcePackage.toFriendlySourceName()}",
                 maxLines = 1,
@@ -90,14 +90,14 @@ fun EditTransactionDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Edit transaksi") },
+        title = { Text("Edit transaction") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 TypeToggle(selectedType = type, onTypeChange = { type = it })
                 OutlinedTextField(
                     value = amount,
                     onValueChange = { amount = it },
-                    label = { Text("Nominal IDR") },
+                    label = { Text("Amount in IDR") },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     singleLine = true
                 )
@@ -109,18 +109,18 @@ fun EditTransactionDialog(
                 OutlinedTextField(
                     value = category,
                     onValueChange = { category = it },
-                    label = { Text("Kategori") }
+                    label = { Text("Category") }
                 )
             }
         },
         confirmButton = {
             Button(onClick = { onSave(type, amount, merchant, category) }) {
-                Text("Simpan")
+                Text("Save")
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Batal")
+                Text("Cancel")
             }
         }
     )

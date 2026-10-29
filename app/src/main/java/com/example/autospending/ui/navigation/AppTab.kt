@@ -13,10 +13,10 @@ enum class AppTab(
     val icon: ImageVector
 ) {
     HOME("Home", Icons.Filled.Home),
-    TRANSAKSI("Transaksi", Icons.Filled.ReceiptLong),
+    TRANSAKSI("Transactions", Icons.Filled.ReceiptLong),
     AUDIT("Audit", Icons.Filled.FactCheck),
     BUDGET("Budget", Icons.Filled.AccountBalanceWallet),
-    TANYA_AI("Tanya AI", Icons.Filled.SmartToy);
+    TANYA_AI("AI Q&A", Icons.Filled.SmartToy);
 
     companion object {
         val entriesInOrder: List<AppTab> = entries

@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 /**
  * User-defined spending category.
  * Built-in categories (Food, Transport, etc.) are code-defined and not stored here.
- * Custom categories are additive — they appear alongside built-ins.
+ * Custom categories are additive and appear alongside built-ins.
  */
 @Entity(tableName = "custom_categories")
 data class CustomCategoryEntity(

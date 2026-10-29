@@ -48,18 +48,18 @@ fun OnboardingScreen() {
         )
         Spacer(Modifier.height(24.dp))
         Text(
-            "Aktifkan Akses Notifikasi",
+            "Enable Notification Access",
             style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center
         )
         Spacer(Modifier.height(16.dp))
         Text(
-            "Expense membaca notifikasi dari bank dan e-wallet kamu untuk mencatat transaksi secara otomatis.\n\n" +
-                "✅ Data hanya tersimpan di HP kamu\n" +
-                "✅ Tidak ada login ke rekening bank\n" +
-                "✅ Tidak ada transaksi yang dilakukan\n" +
-                "✅ Privasi terjaga — tidak ada upload",
+            "Expense reads bank and digital wallet notifications to record transactions automatically.\n\n" +
+                "✅ Notification tracking stays on your phone\n" +
+                "✅ No login to your bank account\n" +
+                "✅ No transactions are performed\n\n" +
+                "Optional AI features send your question and monthly transaction summary to Google Gemini.",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -71,11 +71,11 @@ fun OnboardingScreen() {
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Aktifkan Akses Notifikasi")
+            Text("Enable Notification Access")
         }
         Spacer(Modifier.height(8.dp))
         Text(
-            "Setelah diaktifkan, kembali ke app ini.",
+            "After enabling it, return to this app.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.outline,
             textAlign = TextAlign.Center

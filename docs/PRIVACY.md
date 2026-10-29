@@ -1,37 +1,37 @@
-# Privasi dan izin
+# Privacy and permissions
 
-[Kembali ke README](../README.md)
+[Back to README](../README.md)
 
-## Data lokal
+## Local data
 
-Expense menyimpan transaksi, anggaran, pengeluaran berulang, kategori, dan log audit notifikasi di database Room lokal. Isi transaksi/log dapat mencakup nominal, waktu, merchant, sumber aplikasi, judul, serta teks notifikasi. Database ledger tidak menggunakan enkripsi database khusus; perlindungannya mengikuti sandbox dan keamanan perangkat Android. APK publik tidak berisi transaksi pengguna, database/cadangan pribadi, atau API key bawaan.
+Expense stores transactions, budgets, recurring expenses, categories, and notification audit logs in a local Room database. Transaction and log contents may include amounts, times, merchants, source apps, titles, and notification text. The ledger database does not use dedicated database encryption. Its protection follows the Android device sandbox and device security. The public APK contains no user transactions, private databases or backups, or bundled API key.
 
-Akses notifikasi memberi aplikasi kemampuan membaca notifikasi perangkat. Parser hanya mengenali sumber/format yang didukung, tetapi izin Android sendiri bersifat luas; jangan mengaktifkannya jika tidak nyaman dengan akses tersebut. Log audit lokal dapat memuat teks sensitif. Worker dijadwalkan setiap hari untuk menghapus log mentah yang lebih tua dari 21 hari; eksekusi bergantung pada penjadwalan Android, bukan jaminan penghapusan tepat waktu. Retensi ini tidak menghapus transaksi ledger atau berkas ekspor.
+Notification access gives the app the ability to read device notifications. The parser recognizes only supported sources and formats, but the Android permission itself is broad. Do not enable it if you are uncomfortable with that access. Local audit logs may contain sensitive text. A worker is scheduled daily to delete raw logs older than 21 days. Execution depends on Android scheduling and is not a guarantee of timely deletion. This retention policy does not delete ledger transactions or exported files.
 
-Backup otomatis Android dinonaktifkan pada konfigurasi aplikasi. Jangan menganggap ini pengganti backup manual atau perlindungan terhadap perangkat yang sudah di-root/terkompromi. Ekspor JSON berisi data transaksi dan dapat menyertakan metadata/teks sensitif; aplikasi tujuan berbagi serta lokasi penyimpanan yang dipilih memiliki kebijakan sendiri. Simpan ekspor aman dan jangan unggah ke issue publik. Ekspor transaksi bukan backup lengkap semua data/pengaturan.
+Android automatic backup is disabled in the app configuration. Do not treat this as a replacement for manual backups or protection against a rooted or compromised device. JSON exports contain transaction data and may include sensitive metadata or text. The sharing target and selected storage location have their own policies. Store exports securely and do not upload them to public issues. A transaction export is not a complete backup of all data and settings.
 
-## Gemini opsional: data keluar perangkat
+## Optional Gemini: data leaving the device
 
-Ledger dan parser dasar tidak membutuhkan internet. Saat pengguna mengirim pertanyaan di Tanya AI, aplikasi menghubungi endpoint HTTPS Google Generative Language API (`generativelanguage.googleapis.com`). Payload berisi instruksi/prompt, pertanyaan pengguna, dan ringkasan ledger bulanan **per transaksi**, termasuk tanggal, tipe pemasukan/pengeluaran, nominal, merchant, dan kategori. Ringkasan ini bukan sekadar total agregat dan bukan data anonim.
+The ledger and basic parser do not require internet access. When a user sends a question through AI Q&A, the app contacts Google's Generative Language API over HTTPS (`generativelanguage.googleapis.com`). The payload contains instructions or prompts, the user's question, and a **per-transaction** monthly ledger summary that includes dates, income or expense type, amount, merchant, and category. This summary is not merely an aggregate total and is not anonymous data.
 
-Google menerima payload dan API key untuk autentikasi. Penggunaan, penyimpanan, serta pemrosesan data oleh Google mengikuti [ketentuan Gemini API](https://ai.google.dev/gemini-api/terms) dan [kebijakan privasi Google](https://policies.google.com/privacy), termasuk ketentuan yang dapat berbeda menurut layanan/tingkat penggunaan. Jangan kirim data yang tidak ingin dibagikan kepada Google. Menonaktifkan akses notifikasi tidak membatalkan data yang sebelumnya dikirim lewat AI.
+Google receives the payload and API key for authentication. Google's use, storage, and processing of the data follow the [Gemini API terms](https://ai.google.dev/gemini-api/terms) and [Google Privacy Policy](https://policies.google.com/privacy), including terms that may differ by service or usage level. Do not send Google data that you do not want to share. Disabling notification access does not revoke data previously sent through AI.
 
-Pengguna harus memasukkan key Google AI Studio sendiri yang didukung; ketersediaan model, kuota, dan koneksi menentukan keberhasilan. Tidak ada key bersama atau akses AI gratis yang dijanjikan. Penggunaan AI langsung belum diklaim terverifikasi. Jawaban AI dapat salah dan bukan nasihat keuangan profesional.
+Users must provide their own supported Google AI Studio key. Availability of the model, quota, and network connection determine success. No shared key or free AI access is promised. Direct AI use has not been verified. AI responses may be wrong and are not professional financial advice.
 
-Key disimpan melalui `EncryptedSharedPreferences` dengan Android Keystore; ini tidak mengenkripsi ledger. Field key dimasking pada UI. Launcher publik tidak menerima key lewat intent extras. Jangan membagikan key, dan cabut/rotasi lewat penyedia jika bocor.
+The key is stored through `EncryptedSharedPreferences` with Android Keystore. This does not encrypt the ledger. The key field is masked in the UI. The public launcher does not accept keys through intent extras. Do not share the key, and revoke or rotate it through the provider if it is exposed.
 
-## Izin dan sideload
+## Permissions and sideloading
 
-- **Notification access:** membaca notifikasi untuk pencatatan transaksi; dapat dicabut melalui pengaturan Android.
-- **POST_NOTIFICATIONS:** menampilkan notifikasi aplikasi, misalnya peringatan anggaran; berbeda dari akses membaca notifikasi.
-- **INTERNET:** digunakan fitur Gemini opsional.
-- **REQUEST_IGNORE_BATTERY_OPTIMIZATIONS:** memungkinkan pengguna mengatur pengecualian baterai untuk reliabilitas listener.
-- **RECEIVE_BOOT_COMPLETED:** membantu pemulihan layanan setelah restart/pergantian paket.
+- **Notification access:** reads notifications for transaction recording and can be revoked in Android settings.
+- **POST_NOTIFICATIONS:** displays app notifications, such as budget alerts. This is separate from permission to read notifications.
+- **INTERNET:** used by the optional Gemini feature.
+- **REQUEST_IGNORE_BATTERY_OPTIMIZATIONS:** lets users configure a battery exemption for listener reliability.
+- **RECEIVE_BOOT_COMPLETED:** helps restore the service after a restart or package replacement.
 
-Pada Android 13+ yang memblokir aplikasi sideload, buka Settings → Apps → Expense → menu tiga titik → Allow restricted settings, lalu aktifkan Notification access. Menu berbeda menurut perangkat. Hanya berikan akses untuk APK yang dipercaya; tautan resmi ada di [README](../README.md).
+On Android 13+ devices that block sideloaded apps, open Settings → Apps → Expense → three-dot menu → Allow restricted settings, then enable Notification access. Menus differ by device. Grant access only to APKs you trust. Official links are in the [README](../README.md).
 
-## Sanitasi publikasi
+## Publication sanitization
 
-Publikasi source menghapus importer riwayat pribadi dan enrichment pribadi yang tidak aktif. Logcat ingest dibatasi pada status/sumber paket, bukan payload transaksi; log audit lokal tetap ada untuk fungsi diagnosis. Tidak ada perubahan skema Room sebagai bagian sanitasi ini.
+The published source removes the inactive private history importer and private enrichment. Ingest Logcat output is limited to package status and source rather than transaction payloads; local audit logs remain for diagnostic functions. Room schema was not changed as part of this sanitization.
 
-Untuk berhenti membagikan data ke AI, jangan gunakan Tanya AI dan hapus key melalui pengaturan aplikasi. Untuk menghentikan capture, cabut akses notifikasi. Hapus berkas ekspor terpisah bila tidak diperlukan. Hapus data aplikasi/uninstall menghapus ledger lokal tetapi juga berisiko kehilangan data: **ekspor sebelum tindakan tersebut; jangan uninstall ketika hanya memperbarui versi**.
+To stop sharing data with AI, do not use AI Q&A and remove the key through the app settings. To stop capture, revoke notification access. Delete separate export files when they are no longer needed. Clearing app data or uninstalling removes the local ledger but also risks data loss: **export before either action; do not uninstall when only updating the version**.

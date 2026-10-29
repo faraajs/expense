@@ -1,17 +1,17 @@
-# Kebijakan keamanan
+# Security policy
 
-## Versi yang didukung
+## Supported versions
 
-Perbaikan keamanan ditujukan untuk [rilis stabil terbaru](https://github.com/faraajs/expense/releases/latest) saja. Versi lama tidak menerima backport yang dijanjikan. Sebelum memperbarui, ekspor transaksi ke lokasi aman lalu pasang APK resmi sebagai pembaruan; jangan uninstall atau hapus data ledger.
+Security fixes target only the [latest stable release](https://github.com/faraajs/expense/releases/latest). Older versions do not receive promised backports. Before updating, export transactions to a safe location and install the official APK as an update. Do not uninstall or clear ledger data.
 
-## Melaporkan kerentanan secara privat
+## Private vulnerability reporting
 
-Gunakan [GitHub Private Vulnerability Reporting](https://github.com/faraajs/expense/security/advisories/new) untuk kerentanan, kebocoran data, atau masalah keamanan. Jangan membuka issue/PR publik untuk detail eksploitasi atau data sensitif. Jika pelaporan privat belum tersedia, jangan mempublikasikan detail sensitif; tunggu sampai maintainer mengaktifkannya.
+Use [GitHub Private Vulnerability Reporting](https://github.com/faraajs/expense/security/advisories/new) for vulnerabilities, data leaks, or security issues. Do not open a public issue or PR with exploit details or sensitive data. If private reporting is not yet available, do not publish sensitive details. Wait until a maintainer enables it.
 
-Sertakan versi aplikasi, versi Android, dampak, langkah reproduksi minimal, dan contoh sintetis jika perlu. **Jangan kirim notifikasi bank asli, data ledger, database, ekspor transaksi pribadi, nomor rekening, API key, keystore, atau password** melalui issue publik, screenshot, log, maupun laporan privat. Redaksi bukan pengganti contoh sintetis bila data keuangan dapat direkonstruksi.
+Include the app version, Android version, impact, minimal reproduction steps, and a synthetic example when needed. **Do not send real bank notifications, ledger data, databases, private transaction exports, account numbers, API keys, keystores, or passwords** through public issues, screenshots, logs, or private reports. Redaction is not a substitute for synthetic examples when financial data could be reconstructed.
 
-Maintainer menilai laporan dan mengoordinasikan perbaikan/pengungkapan sesuai ketersediaan; tidak ada SLA respons atau jaminan semua kerentanan sudah ditemukan. Bug biasa dengan data sintetis dapat dilaporkan melalui template issue.
+Maintainers assess reports and coordinate fixes and disclosure as availability allows. There is no response SLA and no guarantee that all vulnerabilities have been found. Ordinary bugs with synthetic data can be reported through the issue template.
 
-## Batas jaminan
+## Warranty limits
 
-CI, Android Lint, Dependabot, dan CodeQL membantu peninjauan, bukan audit keamanan menyeluruh. CodeQL memakai build debug terlacak untuk menganalisis Java/Kotlin; hasil tidak mencakup semua perilaku runtime, dependency, atau konfigurasi release. Lihat [cakupan CI dan verifikasi manual](docs/BUILD-FROM-SOURCE.md#ci-dan-verifikasi-manual). Ledger disimpan lokal, tetapi tidak berarti database terenkripsi. [Privasi dan izin](docs/PRIVACY.md) menjelaskan akses notifikasi dan pengiriman data ke Gemini opsional.
+CI, Android Lint, Dependabot, and CodeQL support review but are not a complete security audit. CodeQL uses a tracked debug build to analyze Java/Kotlin. Results do not cover all runtime behavior, dependencies, or release configuration. See [CI scope and manual verification](docs/BUILD-FROM-SOURCE.md#ci-and-manual-verification). The ledger is stored locally, but this does not mean that the database is encrypted. [Privacy and permissions](docs/PRIVACY.md) explain notification access and optional data transmission to Gemini.

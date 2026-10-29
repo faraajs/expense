@@ -1,62 +1,62 @@
 # Expense
 
-[![Rilis terbaru](https://img.shields.io/github/v/release/faraajs/expense)](https://github.com/faraajs/expense/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/faraajs/expense)](https://github.com/faraajs/expense/releases/latest)
 [![Source: MIT](https://img.shields.io/badge/source-MIT-green.svg)](LICENSE)
 [![Android 8+](https://img.shields.io/badge/Android-8%2B%20(API%2026)-blue.svg)](docs/BUILD-FROM-SOURCE.md)
 [![Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml/badge.svg)](https://github.com/faraajs/expense/actions/workflows/android.yml)
 
-## Unduh APK
+## Download the APK
 
-### [Unduh Expense 0.4.2 — APK universal](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk)
+### [Download Expense 0.4.2, universal APK](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk)
 
-[Halaman rilis 0.4.2](https://github.com/faraajs/expense/releases/tag/v0.4.2) · [Rilis terbaru](https://github.com/faraajs/expense/releases/latest)
+[Expense 0.4.2 release page](https://github.com/faraajs/expense/releases/tag/v0.4.2) · [Latest release](https://github.com/faraajs/expense/releases/latest)
 
-[Unduh source 0.4.2 (tar.gz)](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-source.tar.gz) · [Checksum SHA-256](https://github.com/faraajs/expense/releases/download/v0.4.2/SHA256SUMS.txt)
+[Download source 0.4.2 (tar.gz)](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-source.tar.gz) · [SHA-256 checksum](https://github.com/faraajs/expense/releases/download/v0.4.2/SHA256SUMS.txt)
 
-Expense adalah pencatat pemasukan/pengeluaran Android dengan parser notifikasi bank dan dompet digital. Ini publikasi **aplikasi Expense asli**, bukan UI Lab. Android 8.0 / API 26 atau lebih baru diperlukan.
+Expense is an Android income and expense tracker with parsers for bank and digital wallet notifications. This is a publication of the **original Expense app**, not the Lab UI. Android 8.0 / API 26 or later is required.
 
-## Fitur
+## Features
 
-- Pencatatan transaksi dari notifikasi sumber yang didukung; hasil bergantung pada format notifikasi bank/dompet digital.
-- Riwayat dan filter transaksi, ringkasan bulanan, serta analisis per kategori.
-- Anggaran bulanan dan peringatan, pengeluaran berulang, serta kategori khusus.
-- Ekspor/impor transaksi JSON, log notifikasi untuk audit, dan widget ringkasan.
-- Tanya AI opsional melalui Gemini dengan API key milik pengguna.
+- Record transactions from supported notification sources. Results depend on the bank or digital wallet notification format.
+- Browse and filter transactions, view monthly summaries, and analyze spending by category.
+- Set monthly budgets and alerts, track recurring expenses, and create custom categories.
+- Export and import transactions as JSON, inspect notification logs for auditing, and use a summary widget.
+- Ask optional questions through Gemini with your own API key.
 
-Ledger dan parser dasar berjalan tanpa internet. Gemini memerlukan internet, key Google AI Studio yang didukung, kuota, dan model yang masih tersedia. Penggunaan Gemini langsung belum diklaim terverifikasi; jawaban AI bukan nasihat keuangan profesional.
+The ledger and basic parser work without internet access. Gemini requires internet access, a supported Google AI Studio key, quota, and an available model. Direct Gemini use has not been verified; AI responses are not professional financial advice.
 
-## Instalasi dan pembaruan
+## Installation and updates
 
-1. Sebelum memperbarui, **ekspor transaksi ke JSON** melalui pengaturan dan simpan di lokasi aman. Ekspor transaksi bukan cadangan lengkap semua pengaturan/anggaran/key.
-2. Unduh APK dari tautan di atas. Izinkan pemasangan dari sumber ini untuk browser/pengelola berkas bila Android meminta.
-3. Untuk **0.4.1 → 0.4.2, pasang sebagai pembaruan; jangan uninstall**. Paket tetap `com.example.autospending`, memakai kunci penandatangan asli yang sama, dan skema database Room tetap versi **2** (berbeda dari versi library Room). Uninstall atau hapus data dapat menghilangkan ledger.
-4. Aktifkan **Notification access / Akses notifikasi** untuk Expense agar notifikasi transaksi bisa dibaca. Ini berbeda dari izin menampilkan notifikasi untuk peringatan anggaran.
-5. Pada Android 13+ atau perangkat yang memblokir akses aplikasi sideload: buka **Settings → Apps → Expense → menu tiga titik → Allow restricted settings / Izinkan setelan dibatasi**, lalu aktifkan akses notifikasi. Nama/menu dapat berbeda menurut produsen. Hanya lakukan untuk APK dari sumber yang Anda percaya.
-6. Jika pencatatan berhenti di latar belakang, periksa panduan baterai/OEM di aplikasi dan pengaturan pembatasan baterai perangkat.
+1. Before updating, **export transactions to JSON** from Settings and save the file somewhere safe. A transaction export is not a complete backup of all settings, budgets, or keys.
+2. Download the APK from the links above. If Android asks, allow installation from this source for your browser or file manager.
+3. For **0.4.1 to 0.4.2, install as an update; do not uninstall**. The package remains `com.example.autospending`, uses the same original signing key, and keeps Room database schema version **2** (which is different from the Room library version). Uninstalling or clearing data can remove the ledger.
+4. Enable **Notification access** for Expense so it can read transaction notifications. This is separate from permission to display notifications for budget alerts.
+5. On Android 13+ or devices that block access for sideloaded apps, open **Settings → Apps → Expense → three-dot menu → Allow restricted settings**, then enable notification access. Names and menus may differ by manufacturer. Do this only for APKs from a source you trust.
+6. If background recording stops, check the app's battery and OEM guidance and the device's battery restriction settings.
 
-Jika Android menolak pembaruan karena sertifikat berbeda, jangan uninstall untuk memaksa pemasangan: periksa sumber APK terlebih dahulu. Build sendiri dengan key lain tidak dapat menggantikan APK resmi.
+If Android rejects the update because the certificate differs, do not uninstall to force installation. Check the APK source first. A build signed with a different key cannot replace the official APK.
 
-`applicationId` dan namespace source tetap **`com.example.autospending`**, bukan diganti menjadi nama baru demi branding. Identitas yang sudah dirilis ini menjaga hubungan instalasi dengan data ledger, widget, FileProvider, serta komponen/grant akses notification listener. Nama kelas/paket komponen Android juga dipertahankan; namespace bukan sekadar label aplikasi.
+The source `applicationId` and namespace remain **`com.example.autospending`** rather than being changed to a new branding name. This released identity preserves the installation relationship with ledger data, the widget, FileProvider, and notification listener components and grants. Android component class and package names are also retained. The namespace is not merely an app label.
 
-## Privasi
+## Privacy
 
-APK publik tidak menyertakan transaksi pengguna, database/cadangan pribadi, maupun API key bawaan. Data ledger disimpan lokal; tidak berarti database terenkripsi. Saat Anda memakai Tanya AI, pertanyaan **dan ringkasan ledger bulanan berbentuk baris transaksi** dikirim ke Google. Baca [privasi dan izin](docs/PRIVACY.md) sebelum mengaktifkannya.
+The public APK contains no user transactions, private database or backups, or bundled API key. Ledger data is stored locally, but this does not mean that the database is encrypted. When you use AI Q&A, your question **and a monthly ledger summary containing transaction rows** are sent to Google. Read [privacy and permissions](docs/PRIVACY.md) before enabling it.
 
-## Source dan dokumentasi
+## Source and documentation
 
-- [Build dari source, SDK, dan signing](docs/BUILD-FROM-SOURCE.md)
-- [Privasi](docs/PRIVACY.md)
-- [Kebijakan keamanan dan pelaporan privat](SECURITY.md)
+- [Build from source, SDK, and signing](docs/BUILD-FROM-SOURCE.md)
+- [Privacy](docs/PRIVACY.md)
+- [Security policy and private reporting](SECURITY.md)
 - [Changelog](CHANGELOG.md)
-- [Asal source dan pemulihan](docs/RECOVERY-NOTES.md)
-- [Lisensi MIT](LICENSE) · [Lisensi pihak ketiga](docs/THIRD-PARTY-NOTICES.md)
+- [Source provenance and recovery](docs/RECOVERY-NOTES.md)
+- [MIT license](LICENSE) · [Third-party licenses](docs/THIRD-PARTY-NOTICES.md)
 
-Lisensi MIT berlaku untuk source asli Expense, bukan pelisensian ulang dependency. Rilis publik menambahkan sanitasi privasi untuk publikasi; source tidak menjanjikan rekonstruksi APK lama secara bit-for-bit.
+The MIT license applies to the original Expense source, not to relicensing dependencies. The public release adds privacy sanitization for publication; the source does not promise bit-for-bit reconstruction of the older APK.
 
-## CI dan kontribusi
+## CI and contributions
 
-[Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml) menjalankan unit test nyata, build APK debug, dan Android Lint pada push `main`, pull request, atau pemicu manual. Laporan dan APK debug tersedia sebagai artefak run; APK itu **bukan rilis resmi** dan tidak dapat memperbarui APK resmi dengan sertifikat berbeda. Badge hanya menunjukkan status run terkait, bukan bukti semua fitur sudah diuji.
+[Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml) runs actual unit tests, a debug APK build, and Android Lint on pushes to `main`, pull requests, or manual triggers. Reports and the debug APK are available as run artifacts. The APK is **not an official release** and cannot update the official APK with a different certificate. The badge shows the status of a related run, not proof that every feature has been tested.
 
-[CodeQL](https://github.com/faraajs/expense/actions/workflows/codeql.yml) menganalisis Java/Kotlin melalui build debug terlacak; Dependabot mengusulkan pembaruan Gradle dan GitHub Actions mingguan tanpa auto-merge. CI tidak menjalankan uji perangkat/emulator, akses notifikasi bank nyata, update yang mempertahankan data/grant, widget, atau Gemini dengan key valid. Bedakan bukti manual historis 0.4.2 dari hasil CI pada commit saat ini; lihat [cakupan dan perintah verifikasi](docs/BUILD-FROM-SOURCE.md#ci-dan-verifikasi-manual).
+[CodeQL](https://github.com/faraajs/expense/actions/workflows/codeql.yml) analyzes Java/Kotlin through a tracked debug build. Dependabot proposes weekly Gradle and GitHub Actions updates without auto-merge. CI does not run device or emulator tests, read real bank notifications, verify updates that preserve data or grants, test the widget, or test Gemini with a valid key. Distinguish historical manual evidence for 0.4.2 from CI results on the current commit; see [verification scope and commands](docs/BUILD-FROM-SOURCE.md#ci-and-manual-verification).
 
-Gunakan template issue/PR dengan **data sintetis saja**, bukan notifikasi bank asli, ledger/ekspor pribadi, atau rahasia. Kerentanan dilaporkan [secara privat](SECURITY.md).
+Use the issue and PR templates with **synthetic data only**, not real bank notifications, private ledgers or exports, or secrets. Report vulnerabilities [privately](SECURITY.md).

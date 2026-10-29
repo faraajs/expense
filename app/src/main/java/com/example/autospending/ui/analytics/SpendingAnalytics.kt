@@ -93,7 +93,7 @@ fun hasActiveExplorationFilters(
         typeFilter != null ||
         sourceFilter != null
 
-/** Single canonical filter summary string for Transaksi bar + empty states. */
+/** Single canonical filter summary string for the Transactions bar and empty states. */
 fun explorationFilterSummary(
     timeRange: TimeRange,
     categoryFilter: String?,
@@ -102,7 +102,7 @@ fun explorationFilterSummary(
 ): String {
     val parts = mutableListOf<String>()
     if (timeRange != TimeRange.THIS_MONTH) {
-        parts += "Rentang: ${timeRange.displayLabel()}"
+        parts += "Range: ${timeRange.displayLabel()}"
     }
     categoryFilter?.let { parts += it }
     typeFilter?.let { parts += it.replaceFirstChar { c -> c.uppercase() } }
@@ -111,7 +111,7 @@ fun explorationFilterSummary(
 }
 
 /**
- * Budget ring semantics — pure; unit-testable.
+ * Budget ring semantics are pure and unit-testable.
  * Thresholds default 80/100: AMAN < first, HATI_HATI until 100%, OVER at ≥100%.
  * At exactly 100%: status OVER, center "100%" (not "+0%"); over badge only when rawRatio > 1.
  */
@@ -126,8 +126,8 @@ fun budgetRingModel(
             visualProgress = 0f,
             overPercent = null,
             status = BudgetStatus.UNSET,
-            centerLabel = "Belum diset",
-            centerSubLabel = "Atur budget bulanan"
+            centerLabel = "Not set",
+            centerSubLabel = "Set a monthly budget"
         )
     }
     val rawRatio = totalExpense.toFloat() / budgetLimit.toFloat()
@@ -147,9 +147,9 @@ fun budgetRingModel(
         else -> "$usedPct%"
     }
     val centerSubLabel = when (status) {
-        BudgetStatus.UNSET -> "Atur budget bulanan"
+        BudgetStatus.UNSET -> "Set a monthly budget"
         BudgetStatus.OVER -> "Over ${formatIdr(-remaining)}"
-        else -> "Sisa ${formatIdr(remaining)}"
+        else -> "Remaining ${formatIdr(remaining)}"
     }
     return BudgetRingModel(
         rawRatio = rawRatio,
@@ -162,7 +162,7 @@ fun budgetRingModel(
 }
 
 fun TimeRange.displayLabel(): String = when (this) {
-    TimeRange.TODAY -> "Hari ini"
-    TimeRange.LAST_7_DAYS -> "7 hari"
-    TimeRange.THIS_MONTH -> "Bulan ini"
+    TimeRange.TODAY -> "Today"
+    TimeRange.LAST_7_DAYS -> "Last 7 days"
+    TimeRange.THIS_MONTH -> "This month"
 }

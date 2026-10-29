@@ -51,12 +51,12 @@ fun TxHistoryScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text("${transactions.size} transaksi", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Text("${transactions.size} transactions", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
             if (transactions.isNotEmpty()) {
                 OutlinedButton(
                     onClick = { showDeleteAll = true },
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error)
-                ) { Text("Hapus semua") }
+                ) { Text("Delete all") }
             }
         }
 
@@ -66,7 +66,7 @@ fun TxHistoryScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Belum ada transaksi", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("No transactions yet", color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         } else {
             LazyColumn(
@@ -89,7 +89,7 @@ fun TxHistoryScreen(
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
-                                    "${tx.merchant ?: "—"} · ${tx.category}",
+                                    "${tx.merchant ?: "Unknown merchant"} · ${tx.category}",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -102,7 +102,7 @@ fun TxHistoryScreen(
                             TextButton(
                                 onClick = { toDelete = tx },
                                 colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)
-                            ) { Text("Hapus") }
+                            ) { Text("Delete") }
                         }
                     }
                 }
@@ -114,30 +114,30 @@ fun TxHistoryScreen(
     toDelete?.let { tx ->
         AlertDialog(
             onDismissRequest = { toDelete = null },
-            title = { Text("Hapus transaksi?") },
-            text = { Text("Rp${idrFmt.format(tx.amount)} dari ${tx.merchant ?: tx.sourcePackage} akan dihapus permanen.") },
+            title = { Text("Delete transaction?") },
+            text = { Text("Rp${idrFmt.format(tx.amount)} from ${tx.merchant ?: tx.sourcePackage} will be permanently deleted.") },
             confirmButton = {
                 Button(
                     onClick = { onDelete(tx); toDelete = null },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-                ) { Text("Hapus") }
+                ) { Text("Delete") }
             },
-            dismissButton = { TextButton(onClick = { toDelete = null }) { Text("Batal") } }
+            dismissButton = { TextButton(onClick = { toDelete = null }) { Text("Cancel") } }
         )
     }
 
     if (showDeleteAll) {
         AlertDialog(
             onDismissRequest = { showDeleteAll = false },
-            title = { Text("Hapus semua transaksi?") },
-            text = { Text("Ini akan menghapus ${transactions.size} transaksi secara permanen. Tidak bisa dibatalkan.") },
+            title = { Text("Delete all transactions?") },
+            text = { Text("This will permanently delete ${transactions.size} transactions. This cannot be undone.") },
             confirmButton = {
                 Button(
                     onClick = { onDeleteAll(); showDeleteAll = false },
                     colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.error)
-                ) { Text("Hapus semua") }
+                ) { Text("Delete all") }
             },
-            dismissButton = { TextButton(onClick = { showDeleteAll = false }) { Text("Batal") } }
+            dismissButton = { TextButton(onClick = { showDeleteAll = false }) { Text("Cancel") } }
         )
     }
 }
