@@ -54,11 +54,11 @@ fun HomeScreen(
 
         BudgetRing(model = state.budgetRing)
         TextButton(onClick = onOpenBudget, modifier = Modifier.align(Alignment.End)) {
-            Text("Kelola budget →")
+            Text("Manage budget →")
         }
 
         Text(
-            "Rentang eksplorasi",
+            "Explore range",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold
         )
@@ -95,23 +95,23 @@ fun HomeScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Transaksi terbaru",
+                "Recent transactions",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
-            TextButton(onClick = onSeeAll) { Text("Lihat semua →") }
+            TextButton(onClick = onSeeAll) { Text("See all →") }
         }
 
         val recent = state.visibleTransactions.take(8)
         if (recent.isEmpty()) {
             EmptyState(
-                title = if (state.hasActiveFilters) "Tidak ada di filter ini" else "Belum ada transaksi",
+                title = if (state.hasActiveFilters) "Nothing matches this filter" else "No transactions yet",
                 message = if (state.hasActiveFilters) {
-                    "Coba ubah rentang atau tap Tampilkan semua."
+                    "Try changing the range or tap See all."
                 } else {
-                    "Notifikasi bank/e-wallet akan muncul di sini setelah akses diaktifkan."
+                    "Bank or digital wallet notifications will appear here after access is enabled."
                 },
-                actionLabel = if (state.hasActiveFilters) "Tampilkan semua" else null,
+                actionLabel = if (state.hasActiveFilters) "See all" else null,
                 onAction = if (state.hasActiveFilters) onClearFilters else null
             )
         } else {

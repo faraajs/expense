@@ -38,13 +38,13 @@ fun PermissionBanners(
 fun PermissionCard(onOpenNotificationAccess: () -> Unit) {
     Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer)) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text("Notification Access belum aktif", fontWeight = FontWeight.SemiBold)
+            Text("Notification access is not enabled", fontWeight = FontWeight.SemiBold)
             Text(
-                "Aktifkan akses notifikasi untuk Expense. " +
-                    "Kalau sudah aktif tapi tidak mencatat, matikan lalu nyalakan lagi (toggle off/on)."
+                "Enable notification access for Expense. " +
+                    "If it is enabled but transactions are not recorded, turn it off and on again."
             )
             Button(onClick = onOpenNotificationAccess) {
-                Text("Buka pengaturan")
+                Text("Open settings")
             }
         }
     }
@@ -54,13 +54,13 @@ fun PermissionCard(onOpenNotificationAccess: () -> Unit) {
 fun BatteryCard(onOpenBatterySettings: () -> Unit) {
     Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.tertiaryContainer)) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Text("Optimasi baterai masih aktif", fontWeight = FontWeight.SemiBold)
+            Text("Battery optimization is still active", fontWeight = FontWeight.SemiBold)
             Text(
-                "Samsung sering mematikan listener notifikasi di background. " +
-                    "Izinkan app ini tanpa batasan baterai supaya auto-track tetap hidup."
+                "Samsung often stops notification listeners in the background. " +
+                    "Allow this app to run without battery restrictions so automatic tracking stays active."
             )
             Button(onClick = onOpenBatterySettings) {
-                Text("Izinkan tanpa batasan")
+                Text("Allow without restrictions")
             }
         }
     }

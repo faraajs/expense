@@ -15,7 +15,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
  * - v1 (on-device legacy): various identity hashes depending on build; core tables transactions (+ often budgets)
  * - v2: explicit multi-entity schema (transactions, budgets, raw_log, recurring_expenses, custom_categories)
  *
- * CRITICAL: Never use fallbackToDestructiveMigration on the release path — user data lives here.
+ * CRITICAL: Never use fallbackToDestructiveMigration on the release path. User data lives here.
  */
 @Database(
     entities = [
@@ -47,7 +47,7 @@ abstract class AppDatabase : RoomDatabase() {
             override fun migrate(db: SupportSQLiteDatabase) {
                 Log.i(TAG, "Running MIGRATION_1_2 (preserve existing data)")
 
-                // Core tables — create only if a very old build lacked them
+                // Core tables. Create them only if a very old build lacked them
                 db.execSQL(
                     """
                     CREATE TABLE IF NOT EXISTS `transactions` (

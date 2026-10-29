@@ -74,7 +74,7 @@ fun AutoSpendingScaffold(
                 fontWeight = FontWeight.Bold
             )
             Text(
-                "Bulan $monthKey · v${BuildConfig.VERSION_NAME}",
+                "Month $monthKey · v${BuildConfig.VERSION_NAME}",
                 style = MaterialTheme.typography.bodyMedium
             )
             Spacer(Modifier.height(12.dp))

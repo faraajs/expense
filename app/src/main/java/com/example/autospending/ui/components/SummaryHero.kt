@@ -27,13 +27,13 @@ fun SummaryHero(
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         HeroTile(
-            label = "Pengeluaran",
+            label = "Expenses",
             value = formatIdr(totalExpense),
             valueColor = ExpenseRed,
             modifier = Modifier.weight(1f)
         )
         HeroTile(
-            label = "Pemasukan",
+            label = "Income",
             value = formatIdr(totalIncome),
             valueColor = IncomeGreen,
             modifier = Modifier.weight(1f)

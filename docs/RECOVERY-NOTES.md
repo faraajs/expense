@@ -1,35 +1,37 @@
-# Catatan pemulihan source
+# Source recovery notes
 
-[Kembali ke README](../README.md)
+[Back to README](../README.md)
 
-Repository publik ini memuat source **Expense asli**, bukan UI Lab. Source dipulihkan dari snapshot pengembangan sebelumnya dan dipublikasikan dalam root Git bersih, tanpa menyalin riwayat `.git` lama.
+This public repository contains the **original Expense source**, not the Lab UI. The source was recovered from an earlier development snapshot and published in a clean Git root without copying the old `.git` history.
 
-## Referensi asal
+## Provenance reference
 
-- Snapshot utama: stash `26e341d5ccd5a93967c1c9a4a8d2d8f0f7cda957`.
-- Source yang sebelumnya untracked: parent ketiga stash, dengan prefix objek `453d52e`.
-- Referensi VCS APK lama: prefix `598590ee`.
-- APK referensi: Expense 0.4.1, versionCode 16, applicationId `com.example.autospending`.
-- Publikasi baru: 0.4.2, versionCode 17, applicationId yang sama; skema Room tetap versi 2 dan rilis resmi menggunakan signing key asli yang sama.
+- Main snapshot: stash `26e341d5ccd5a93967c1c9a4a8d2d8f0f7cda957`.
+- Previously untracked source: the stash's third parent, with object prefix `453d52e`.
+- VCS reference for the old APK: prefix `598590ee`.
+- Reference APK: Expense 0.4.1, versionCode 16, applicationId `com.example.autospending`.
+- New publication: 0.4.2, versionCode 17, with the same applicationId. Room schema remains version 2 and the official release uses the same original signing key.
 
-Identifier asal tersebut menjelaskan provenance; objek lama tidak harus tersedia dalam repository publik bersih ini. Pemulihan snapshot tidak membuktikan bahwa setiap file cocok dengan source APK referensi, dan **tidak ada klaim rekonstruksi bit-for-bit**. Perubahan toolchain, signing, serta metadata build juga dapat mengubah byte APK.
+These source identifiers explain provenance. The old objects do not need to be available in this clean public repository. Recovering the snapshot does not prove that every file matches the reference APK source, and there is **no claim of bit-for-bit reconstruction**. Toolchain, signing, and build metadata changes can also change APK bytes.
 
-## Batas publikasi
+## Publication limits
 
-Database pengguna, ekspor/cadangan pribadi, signing key, password, API key, dan konfigurasi lokal tidak disertakan. Importer transaksi riwayat pribadi dan enrichment pribadi yang tidak aktif dihapus untuk sanitasi publikasi. Penerimaan key melalui launcher intent dihapus, input key UI dimasking, dan log ingest tidak mencetak payload transaksi. Fitur audit lokal tetap menyimpan log sesuai [kebijakan privasi](PRIVACY.md).
+User databases, private exports or backups, signing keys, passwords, API keys, and local configuration are not included. The inactive private history transaction importer and private enrichment were removed for publication sanitization. Key acceptance through launcher intents was removed, key input is masked in the UI, and ingest logs do not print transaction payloads. The local audit feature still stores logs as described in the [privacy policy](PRIVACY.md).
 
-MIT dipilih untuk source asli Expense; notice dan lisensi upstream tetap berlaku seperti dijelaskan pada [third-party notices](THIRD-PARTY-NOTICES.md). Source pemulihan bukan alasan untuk menimpa atau menghapus data instalasi lama: ekspor JSON terlebih dahulu lalu pasang APK resmi sebagai pembaruan, bukan uninstall.
+MIT was chosen for the original Expense source. Upstream notices and licenses remain in force as described in the [third-party notices](THIRD-PARTY-NOTICES.md). Recovered source is not a reason to overwrite or delete data from an old installation. Export JSON first, then install the official APK as an update rather than uninstalling.
 
-## Verifikasi 0.4.2
+<a id="verifikasi-042"></a>
 
-- `:app:assembleRelease` berhasil dengan JDK 17, Gradle 9.4.1, dan AGP 9.2.1.
-- 50 unit test lulus, tanpa failure/error/skip: parser, analitik, ekspor, dan impor.
-- APK lolos `apksigner verify`; sertifikat SHA-256 sama dengan APK 0.4.1: `d12d80aacf5249420ed180ab5d73df8c91198361e4a9b2d96a45cad6f6da33aa`.
-- Emulator Android 11 / API 30: memasang 0.4.2 di atas APK 0.4.1 berhasil tanpa uninstall. Dua transaksi sintetis tetap identik untuk setiap kolom; identity hash Room v2 tidak berubah.
-- Key sintetis terenkripsi tetap utuh setelah update. Extra `gemini_api_key` pada warm launch dan `openrouter_api_key` pada cold launch tidak mengubah isi preference terenkripsi.
-- APK diperiksa untuk ketiadaan importer/nama seed pribadi, database, dan keystore; aset lisensi pihak ketiga disertakan.
-- Source hasil `git archive` juga berhasil dibangun dengan `:app:assembleDebug --offline`, tanpa konfigurasi signing lokal.
-- Instalasi baru 0.4.2 memiliki database kosong. Notifikasi sintetis diterima melalui listener Android; duplikat tidak menambah transaksi dan OTP diabaikan. Logcat hanya mencatat status, bukan isi transaksi.
-- Input API key dimasking dan penyimpanan melalui UI berhasil dengan key sintetis. Ekspor JSON melalui UI menghasilkan empat transaksi sintetis yang sesuai database, tanpa `rawText`. Share sheet emulator tidak memiliki aplikasi penerima; pengiriman ke aplikasi lain belum diuji.
+## Verification 0.4.2
 
-Pengujian ini memakai emulator dan data sintetis, bukan database/HP pribadi. Panggilan Gemini dengan API key valid serta pengujian perangkat fisik belum dilakukan. Ini tidak menjamin format notifikasi semua bank/OEM didukung.
+- `:app:assembleRelease` succeeded with JDK 17, Gradle 9.4.1, and AGP 9.2.1.
+- 50 unit tests passed with no failures, errors, or skips: parser, analytics, export, and import.
+- The APK passed `apksigner verify`. Its SHA-256 certificate matched APK 0.4.1: `d12d80aacf5249420ed180ab5d73df8c91198361e4a9b2d96a45cad6f6da33aa`.
+- On an Android 11 / API 30 emulator, installing 0.4.2 over APK 0.4.1 succeeded without uninstalling. Two synthetic transactions remained identical in every column, and the Room v2 identity hash did not change.
+- The encrypted synthetic key remained intact after the update. The `gemini_api_key` extra on warm launch and the `openrouter_api_key` extra on cold launch did not change the encrypted preference contents.
+- The APK was checked for the absence of private importer or seed names, databases, and keystores. Third-party license assets were included.
+- The source produced by `git archive` also built successfully with `:app:assembleDebug --offline`, without local signing configuration.
+- A fresh 0.4.2 installation had an empty database. Synthetic notifications were received through the Android listener. Duplicates did not add transactions and OTPs were ignored. Logcat recorded status only, not transaction contents.
+- API key input was masked and UI storage succeeded with a synthetic key. JSON export through the UI produced four synthetic transactions matching the database, without `rawText`. The emulator share sheet had no receiving app. Sending to another app was not tested.
+
+These tests used an emulator and synthetic data, not a personal database or phone. Gemini calls with a valid API key and physical device testing were not performed. This does not guarantee that all bank or OEM notification formats are supported.

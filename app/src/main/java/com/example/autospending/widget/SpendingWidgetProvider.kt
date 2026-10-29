@@ -68,7 +68,7 @@ class SpendingWidgetProvider : AppWidgetProvider() {
 
                 views.setTextViewText(R.id.widget_expense, "−${formatIdr(expense)}")
                 views.setTextViewText(R.id.widget_income, "+${formatIdr(income)}")
-                views.setTextViewText(R.id.widget_label, "Hari ini")
+                views.setTextViewText(R.id.widget_label, "Today")
 
                 manager.updateAppWidget(widgetId, views)
             }

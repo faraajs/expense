@@ -29,7 +29,7 @@ fun RawLogScreen(entries: List<RawLogEntity>) {
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                "Belum ada log notifikasi.\n\nAktifkan diagnostic_log di Settings atau tunggu notifikasi bank masuk.",
+                "No notification logs yet.\n\nEnable diagnostic_log in Settings or wait for a bank notification.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -45,7 +45,7 @@ fun RawLogScreen(entries: List<RawLogEntity>) {
     ) {
         item {
             Text(
-                "${entries.size} entri terbaru",
+                "${entries.size} recent entries",
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.outline,
                 modifier = Modifier.padding(vertical = 8.dp)

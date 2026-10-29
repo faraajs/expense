@@ -66,10 +66,10 @@ fun SettingsScreen(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Pengaturan", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
+        Text("Settings", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold)
 
         // NLS Status
-        SectionCard(title = "Status Notifikasi") {
+        SectionCard(title = "Notification status") {
             Row(
                 Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -77,35 +77,35 @@ fun SettingsScreen(
             ) {
                 Column {
                     Text(
-                        if (hasNotificationAccess) "✅ Akses aktif" else "❌ Akses belum diaktifkan",
+                        if (hasNotificationAccess) "✅ Access enabled" else "❌ Access not enabled",
                         fontWeight = FontWeight.SemiBold
                     )
                     if (!hasNotificationAccess) {
                         Text(
-                            "App tidak bisa membaca notifikasi",
+                            "The app cannot read notifications",
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.error
                         )
                     }
                 }
                 if (!hasNotificationAccess) {
-                    TextButton(onClick = onOpenNotificationAccess) { Text("Aktifkan") }
+                    TextButton(onClick = onOpenNotificationAccess) { Text("Enable") }
                 }
             }
         }
 
         // Feature flags
-        SectionCard(title = "Mode Parser") {
+        SectionCard(title = "Parser mode") {
             SettingsToggle(
-                title = "Parser aktif",
-                subtitle = "Matikan untuk Phase 0 (hanya rekam, tidak parse)",
+                title = "Parser enabled",
+                subtitle = "Disable for Phase 0 (record only, do not parse)",
                 checked = parsersEnabled,
                 onCheckedChange = onToggleParsers
             )
             HorizontalDivider(Modifier.padding(vertical = 8.dp))
             SettingsToggle(
-                title = "Log semua notifikasi",
-                subtitle = "Rekam semua paket ke raw_log (bukan hanya whitelist)",
+                title = "Log all notifications",
+                subtitle = "Record all packages in raw_log (not only the whitelist)",
                 checked = diagnosticLogAll,
                 onCheckedChange = onToggleDiagnosticLog
             )
@@ -114,7 +114,7 @@ fun SettingsScreen(
         // Gemini API Key
         SectionCard(title = "Gemini AI") {
             Text(
-                "API key untuk AI chat & kategorisasi otomatis. Dapatkan di aistudio.google.com",
+                "API key for AI chat and automatic categorization. Get one at aistudio.google.com",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -131,7 +131,7 @@ fun SettingsScreen(
                     IconButton(onClick = { showKey = !showKey }) {
                         Icon(
                             if (showKey) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                            contentDescription = if (showKey) "Sembunyikan" else "Tampilkan"
+                            contentDescription = if (showKey) "Hide" else "Show"
                         )
                     }
                 }
@@ -141,19 +141,19 @@ fun SettingsScreen(
                 Button(
                     onClick = { onSaveApiKey(apiKeyDraft) },
                     enabled = apiKeyDraft.trim().isNotBlank()
-                ) { Text("Simpan") }
+                ) { Text("Save") }
                 OutlinedButton(onClick = {
                     apiKeyDraft = ""
                     onClearApiKey()
-                }) { Text("Hapus") }
+                }) { Text("Clear") }
             }
         }
 
         // Health counters
         if (healthSnapshot.packages.isNotEmpty()) {
-            SectionCard(title = "Status Parser per Sumber") {
+            SectionCard(title = "Parser status by source") {
                 Text(
-                    if (healthSnapshot.listenerConnected) "🟢 Listener terhubung" else "🔴 Listener terputus",
+                    if (healthSnapshot.listenerConnected) "🟢 Listener connected" else "🔴 Listener disconnected",
                     style = MaterialTheme.typography.bodySmall,
                     color = if (healthSnapshot.listenerConnected)
                         MaterialTheme.colorScheme.primary
@@ -176,13 +176,13 @@ fun SettingsScreen(
         // Navigation links
         SectionCard(title = "Tools") {
             TextButton(onClick = onOpenRawLog, modifier = Modifier.fillMaxWidth()) {
-                Text("📋 Lihat raw log notifikasi →")
+                Text("📋 View raw notification log →")
             }
             TextButton(onClick = onOpenOemBattery, modifier = Modifier.fillMaxWidth()) {
-                Text("🔋 Panduan baterai OEM →")
+                Text("🔋 OEM battery guide →")
             }
             TextButton(onClick = onOpenTxHistory, modifier = Modifier.fillMaxWidth()) {
-                Text("🗑️ Kelola riwayat transaksi →")
+                Text("🗑️ Manage transaction history →")
             }
         }
     }

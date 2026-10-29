@@ -43,7 +43,7 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Text(
-            "Budget bulanan",
+            "Monthly budget",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold
         )
@@ -56,7 +56,7 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
         OutlinedTextField(
             value = budget,
             onValueChange = { budget = it },
-            label = { Text("Limit IDR") },
+            label = { Text("IDR limit") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             singleLine = true,
             modifier = Modifier.fillMaxWidth()
@@ -72,13 +72,13 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
             },
             enabled = budget.any { it.isDigit() }
         ) {
-            Text("Simpan budget")
+            Text("Save budget")
         }
-        Text("Alert dikirim saat pengeluaran mencapai 80% dan 100% dari budget.")
+        Text("Alerts are sent when spending reaches 80% and 100% of the budget.")
         if (state.budgetLimit > 0) {
             Text("Terpakai: ${formatIdr(state.totalExpense)}")
             Text("Limit: ${formatIdr(state.budgetLimit)}")
-            Text("Sisa: ${formatIdr(state.remainingBudget)}")
+            Text("Remaining: ${formatIdr(state.remainingBudget)}")
         }
         Spacer(Modifier.height(24.dp))
     }

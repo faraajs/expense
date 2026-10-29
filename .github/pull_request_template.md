@@ -12,9 +12,9 @@
 
 ## Checklist
 
-- [ ] Tidak menyertakan notifikasi bank asli, ledger/database/ekspor pribadi, API key, signing key, atau password.
+- [ ] Does not include real bank notifications, private ledger/database/exports, API keys, signing keys, or passwords.
 - [ ] Mempertahankan applicationId, namespace, dan identitas komponen `com.example.autospending`; perubahan database/update menjelaskan dampak pada data dan grant Android.
 - [ ] Memperbarui dokumentasi/changelog jika relevan.
-- [ ] Tidak menyamakan APK debug CI dengan APK release resmi atau CI dengan verifikasi perangkat.
+- [ ] Does not equate the CI debug APK with the official release APK or CI with device verification.
 
 <!-- Detail kerentanan harus dilaporkan secara privat sesuai SECURITY.md, bukan dalam PR publik. -->

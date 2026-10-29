@@ -63,7 +63,7 @@ fun EnhancedSummaryScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            "Ringkasan $monthKey",
+            "Summary for $monthKey",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
@@ -71,13 +71,13 @@ fun EnhancedSummaryScreen(
         // Summary cards row
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             SummaryCard(
-                label = "Pengeluaran",
+                label = "Expenses",
                 amount = totalExpense,
                 color = MaterialTheme.colorScheme.error,
                 modifier = Modifier.weight(1f)
             )
             SummaryCard(
-                label = "Pemasukan",
+                label = "Income",
                 amount = totalIncome,
                 color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.weight(1f)
@@ -95,7 +95,7 @@ fun EnhancedSummaryScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Net bulan ini", style = MaterialTheme.typography.titleSmall)
+                Text("Net this month", style = MaterialTheme.typography.titleSmall)
                 Text(
                     "${if (net >= 0) "+" else ""}${formatIdr(net)}",
                     style = MaterialTheme.typography.titleMedium,
@@ -112,7 +112,7 @@ fun EnhancedSummaryScreen(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
                 Column(Modifier.padding(16.dp)) {
-                    Text("Kategori pengeluaran", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
+                    Text("Expense categories", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
                     Spacer(Modifier.height(16.dp))
                     Box(modifier = Modifier.align(Alignment.CenterHorizontally)) {
                         DonutChart(
@@ -159,15 +159,15 @@ fun EnhancedSummaryScreen(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
                 Column(Modifier.padding(16.dp)) {
-                    Text("Tren harian", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
+                    Text("Daily trend", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                             Canvas(Modifier.size(8.dp)) { drawCircle(Color.Red) }
-                            Text("Pengeluaran", style = MaterialTheme.typography.labelSmall)
+                            Text("Expenses", style = MaterialTheme.typography.labelSmall)
                         }
                         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                             Canvas(Modifier.size(8.dp)) { drawCircle(Color(0xFF4CAF50)) }
-                            Text("Pemasukan", style = MaterialTheme.typography.labelSmall)
+                            Text("Income", style = MaterialTheme.typography.labelSmall)
                         }
                     }
                     Spacer(Modifier.height(8.dp))
@@ -186,23 +186,23 @@ fun EnhancedSummaryScreen(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
             ) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    Text("Per hari", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
+                    Text("By day", fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.titleSmall)
                     Spacer(Modifier.height(8.dp))
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        Text("Tanggal", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                        Text("Keluar", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
-                        Text("Masuk", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                        Text("Date", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                        Text("Expenses", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                        Text("Income", style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
                     }
                     dayData.takeLast(14).reversed().forEach { (day, expense, income) ->
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             Text(day, style = MaterialTheme.typography.bodySmall)
                             Text(
-                                if (expense > 0) formatIdr(expense) else "—",
+                                if (expense > 0) formatIdr(expense) else "None",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (expense > 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.outline
                             )
                             Text(
-                                if (income > 0) formatIdr(income) else "—",
+                                if (income > 0) formatIdr(income) else "None",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (income > 0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
                             )
@@ -216,7 +216,7 @@ fun EnhancedSummaryScreen(
     }
 }
 
-// --- Data helpers ---
+// Data helpers
 
 data class DayDataPoint(val label: String, val expense: Long, val income: Long)
 
@@ -234,7 +234,7 @@ private fun buildDayData(transactions: List<TransactionEntity>): List<DayDataPoi
         .sortedBy { it.label }
 }
 
-// --- Composables ---
+// Composables
 
 @Composable
 private fun SummaryCard(label: String, amount: Long, color: Color, modifier: Modifier = Modifier) {
@@ -246,7 +246,7 @@ private fun SummaryCard(label: String, amount: Long, color: Color, modifier: Mod
     }
 }
 
-// --- Canvas charts ---
+// Canvas charts
 
 data class DonutSegment(val label: String, val value: Float)
 

@@ -65,7 +65,7 @@ fun TransactionsScreen(
         if (state.hasActiveFilters) {
             item {
                 ActiveFilterSummaryBar(
-                    summary = filterSummary.ifBlank { "Filter aktif" },
+                    summary = filterSummary.ifBlank { "Active filter" },
                     onClear = {
                         haptics.performLight()
                         onClearFilters()
@@ -75,7 +75,7 @@ fun TransactionsScreen(
         }
         item {
             Text(
-                "Filter",
+                "Filters",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -97,7 +97,7 @@ fun TransactionsScreen(
         }
         item {
             Text(
-                "Daftar transaksi",
+                "Transaction list",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.SemiBold
             )
@@ -105,13 +105,13 @@ fun TransactionsScreen(
         if (state.visibleTransactions.isEmpty()) {
             item {
                 EmptyState(
-                    title = "Belum ada data",
+                    title = "No data yet",
                     message = if (state.hasActiveFilters) {
-                        "Tidak cocok dengan filter. Tap Tampilkan semua."
+                        "Nothing matches this filter. Tap See all."
                     } else {
-                        "Belum ada data untuk diedit."
+                        "There is no data to edit yet."
                     },
-                    actionLabel = if (state.hasActiveFilters) "Tampilkan semua" else null,
+                    actionLabel = if (state.hasActiveFilters) "See all" else null,
                     onAction = if (state.hasActiveFilters) onClearFilters else null
                 )
             }
@@ -154,12 +154,12 @@ private fun ManualEntryCard(onAddManual: (String, String, String, String) -> Uni
             Modifier.fillMaxWidth().padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            Text("Input manual", fontWeight = FontWeight.SemiBold)
+            Text("Manual entry", fontWeight = FontWeight.SemiBold)
             TypeToggle(type, onTypeChange = { type = it })
             OutlinedTextField(
                 value = amount,
                 onValueChange = { amount = it },
-                label = { Text("Nominal IDR") },
+                label = { Text("Amount in IDR") },
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
@@ -174,7 +174,7 @@ private fun ManualEntryCard(onAddManual: (String, String, String, String) -> Uni
             OutlinedTextField(
                 value = category,
                 onValueChange = { category = it },
-                label = { Text("Kategori") },
+                label = { Text("Category") },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -187,7 +187,7 @@ private fun ManualEntryCard(onAddManual: (String, String, String, String) -> Uni
                 },
                 enabled = amount.any { it.isDigit() }
             ) {
-                Text("Simpan")
+                Text("Save")
             }
         }
     }

@@ -36,12 +36,12 @@ fun FilterChipRow(
         FilterChip(
             selected = typeFilter == null,
             onClick = { onTypeSelected(null) },
-            label = { Text("Semua") }
+            label = { Text("All") }
         )
         FilterChip(
             selected = typeFilter == "expense",
             onClick = { onTypeSelected(if (typeFilter == "expense") null else "expense") },
-            label = { Text("Keluar") },
+            label = { Text("Expenses") },
             colors = FilterChipDefaults.filterChipColors(
                 selectedContainerColor = ExpenseRedSoft,
                 selectedLabelColor = ExpenseRed,
@@ -56,7 +56,7 @@ fun FilterChipRow(
         FilterChip(
             selected = typeFilter == "income",
             onClick = { onTypeSelected(if (typeFilter == "income") null else "income") },
-            label = { Text("Masuk") },
+            label = { Text("Income") },
             colors = FilterChipDefaults.filterChipColors(
                 selectedContainerColor = IncomeGreenSoft,
                 selectedLabelColor = IncomeGreen,
@@ -93,7 +93,7 @@ fun ActiveFilterSummaryBar(
     ) {
         Text(summary, modifier = Modifier.weight(1f))
         TextButton(onClick = onClear) {
-            Text("Tampilkan semua")
+            Text("See all")
         }
     }
 }

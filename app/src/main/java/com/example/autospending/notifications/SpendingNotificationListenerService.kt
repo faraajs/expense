@@ -31,7 +31,7 @@ class SpendingNotificationListenerService : NotificationListenerService() {
     override fun onListenerConnected() {
         super.onListenerConnected()
         app.listenerHealthTracker.onConnected()
-        Log.i(TAG, "Notification listener connected — backfilling active notifications")
+        Log.i(TAG, "Notification listener connected; backfilling active notifications")
         try {
             activeNotifications?.forEach { processNotification(it, fromBackfill = true) }
         } catch (e: Exception) {
@@ -40,7 +40,7 @@ class SpendingNotificationListenerService : NotificationListenerService() {
     }
 
     override fun onListenerDisconnected() {
-        Log.w(TAG, "Notification listener disconnected — requesting rebind")
+        Log.w(TAG, "Notification listener disconnected; requesting rebind")
         app.listenerHealthTracker.onDisconnected()
         requestRebind(
             android.content.ComponentName(this, SpendingNotificationListenerService::class.java)

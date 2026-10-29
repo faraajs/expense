@@ -1,6 +1,6 @@
 package com.example.autospending.parser
 
-/** GoPay & Gojek app — both post the same transaction notif, deduplicated via "com.gojek" family. */
+/** GoPay and Gojek apps post the same transaction notification, deduplicated via the "com.gojek" family. */
 class GoPayParser : BaseBankParser() {
     override val packagePrefixes = listOf("com.gojek.gopay", "com.gojek.app")
     override val dedupFamily = "com.gojek"
@@ -26,7 +26,7 @@ class SeaBankParser : BaseBankParser() {
     override val packagePrefixes = listOf("id.co.bankbkemobile.digitalbank")
 }
 
-/** Shopee & ShopeePay — same family, deduplicated. */
+/** Shopee and ShopeePay use the same family and are deduplicated. */
 class ShopeeParser : BaseBankParser() {
     override val packagePrefixes = listOf("com.shopee.id", "com.shopeepay.id")
     override val dedupFamily = "com.shopee"
@@ -61,7 +61,7 @@ class BcaParser : BaseBankParser() {
     override val dedupFamily = "com.bca"
 }
 
-/** BRImo — BRI mobile banking */
+/** BRImo, BRI mobile banking. */
 class BrimoParser : BaseBankParser() {
     override val packagePrefixes = listOf("id.co.bri.brimo")
 }

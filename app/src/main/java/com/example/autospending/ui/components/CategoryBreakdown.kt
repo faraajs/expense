@@ -51,7 +51,7 @@ fun CategoryBreakdown(
     val maxAmount = items.maxOf { it.amount }.coerceAtLeast(1L)
     Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
-            "Kategori",
+            "Categories",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.SemiBold
         )
@@ -112,7 +112,7 @@ fun CategoryBreakdown(
         }
         if (selectedCategory != null) {
             Text(
-                "Filter: $selectedCategory (tap lagi untuk clear)",
+                "Filter: $selectedCategory (tap again to clear)",
                 style = MaterialTheme.typography.bodySmall,
                 color = TealSecondary
             )

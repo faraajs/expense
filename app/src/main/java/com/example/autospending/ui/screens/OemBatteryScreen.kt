@@ -50,15 +50,15 @@ fun OemBatteryScreen() {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(Icons.Default.BatteryAlert, contentDescription = null, tint = MaterialTheme.colorScheme.error)
             Text(
-                "  Pengaturan Baterai OEM",
+                "  OEM Battery Settings",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.Bold
             )
         }
 
         Text(
-            "Beberapa HP (Xiaomi, Oppo, Vivo, Samsung) secara agresif membunuh service background. " +
-                "Tanpa pengaturan ini, notifikasi bisa terlewat.",
+            "Some phones (Xiaomi, Oppo, Vivo, Samsung) aggressively stop background services. " +
+                "Without these settings, notifications may be missed.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -77,43 +77,43 @@ fun OemBatteryScreen() {
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Izinkan baterai tidak dibatasi")
+            Text("Allow unrestricted battery use")
         }
 
         OemGuideCard(
             title = "📱 Xiaomi / MIUI / HyperOS",
             steps = listOf(
-                "Buka Pengaturan → Aplikasi → Expense",
-                "Ketuk Baterai → Tidak ada batasan",
-                "Buka Keamanan → Mulai otomatis → Aktifkan Expense",
-                "Buka Keamanan → Baterai → Aplikasi terproteksi → Aktifkan"
+                "Open Settings → Apps → Expense",
+                "Tap Battery → No restrictions",
+                "Open Security → Autostart → Enable Expense",
+                "Open Security → Battery → Protected apps → Enable"
             )
         )
 
         OemGuideCard(
             title = "📱 Oppo / ColorOS / Realme",
             steps = listOf(
-                "Buka Pengaturan → Manajemen aplikasi → Expense",
-                "Ketuk Penggunaan baterai → Tidak dioptimalkan",
-                "Buka Pengaturan → Manajemen daya → Izin latar belakang → Aktifkan"
+                "Open Settings → App management → Expense",
+                "Tap Battery usage → Not optimized",
+                "Open Settings → Power management → Background permission → Enable"
             )
         )
 
         OemGuideCard(
             title = "📱 Vivo / FuntouchOS / OriginOS",
             steps = listOf(
-                "Buka Pengaturan → Baterai → Konsumsi baterai latar belakang",
-                "Pilih Expense → Izinkan konsumsi latar belakang",
-                "Buka iManager → Akselerasi aplikasi → Nonaktifkan untuk Expense"
+                "Open Settings → Battery → Background battery usage",
+                "Select Expense → Allow background usage",
+                "Open iManager → App acceleration → Disable for Expense"
             )
         )
 
         OemGuideCard(
             title = "📱 Samsung One UI",
             steps = listOf(
-                "Buka Pengaturan → Perawatan perangkat → Baterai",
-                "Ketuk Batas penggunaan latar belakang → Aplikasi yang tidak pernah tidur",
-                "Tambahkan Expense ke daftar"
+                "Open Settings → Device care → Battery",
+                "Tap Background usage limits → Never sleeping apps",
+                "Add Expense to the list"
             )
         )
 
@@ -124,7 +124,7 @@ fun OemBatteryScreen() {
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Panduan lengkap: dontkillmyapp.com ↗")
+            Text("Full guide: dontkillmyapp.com ↗")
         }
     }
 }
