@@ -223,7 +223,7 @@ class AppViewModel(
                 emitSnackbar("Export $count transaksi siap dibagikan")
                 onReady(file)
             } catch (e: Exception) {
-                emitSnackbar("Export gagal: ${e.message?.take(80)}")
+                emitSnackbar("Export gagal; ${e.message?.take(80)}")
                 onReady(null)
             } finally {
                 _isExporting.value = false
@@ -236,10 +236,10 @@ class AppViewModel(
             try {
                 val result = repository.importTransactionsJson(json)
                 emitSnackbar(
-                    "Import: ${result.imported} baru, ${result.skipped} skip, ${result.errors} error"
+                    "Import · ${result.imported} baru, ${result.skipped} skip, ${result.errors} error"
                 )
             } catch (e: Exception) {
-                emitSnackbar("Import gagal: ${e.message?.take(80)}")
+                emitSnackbar("Import gagal; ${e.message?.take(80)}")
             }
         }
     }

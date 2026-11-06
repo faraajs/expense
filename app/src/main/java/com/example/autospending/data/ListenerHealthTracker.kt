@@ -26,7 +26,7 @@ data class HealthSnapshot(
 
 /**
  * Tracks NotificationListenerService health and per-package parse outcome counters.
- * Thread-safe: uses AtomicLong/AtomicBoolean + ConcurrentHashMap.
+ * Thread safety via AtomicLong/AtomicBoolean + ConcurrentHashMap.
  * Throttles SharedPreferences writes to every 5 seconds to avoid I/O spam.
  */
 class ListenerHealthTracker(context: Context) {

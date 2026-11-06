@@ -6,9 +6,9 @@
 
 <!-- Pisahkan hasil yang benar-benar dijalankan dari rencana. Sertakan perintah/hasil dan tautan run CI; tulis "belum dijalankan" jika belum. Gunakan data sintetis saja. -->
 
-- Unit test / debug build / lint:
-- Pemeriksaan manual perangkat/emulator:
-- Batas atau pemeriksaan yang belum dilakukan:
+- Unit test / debug build / lint
+- Pemeriksaan manual perangkat/emulator
+- Batas atau pemeriksaan yang belum dilakukan
 
 ## Checklist
 

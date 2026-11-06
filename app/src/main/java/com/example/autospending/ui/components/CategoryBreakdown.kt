@@ -112,7 +112,7 @@ fun CategoryBreakdown(
         }
         if (selectedCategory != null) {
             Text(
-                "Filter: $selectedCategory (tap lagi untuk clear)",
+                "Filter · $selectedCategory (tap lagi untuk clear)",
                 style = MaterialTheme.typography.bodySmall,
                 color = TealSecondary
             )

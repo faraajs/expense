@@ -6,7 +6,7 @@ labels: ''
 assignees: ''
 ---
 
-<!-- Masalah keamanan: gunakan SECURITY.md, bukan issue publik. Jangan unggah notifikasi bank asli, ledger/database/ekspor pribadi, API key, signing key, atau password. Gunakan contoh transaksi sintetis. -->
+<!-- Masalah keamanan, gunakan SECURITY.md, bukan issue publik. Jangan unggah notifikasi bank asli, ledger/database/ekspor pribadi, API key, signing key, atau password. Gunakan contoh transaksi sintetis. -->
 
 ## Masalah dan hasil yang diharapkan
 
@@ -16,13 +16,13 @@ assignees: ''
 
 ## Lingkungan
 
-- Versi Expense dan sumber APK (rilis resmi/build sendiri):
-- Versi Android dan model perangkat:
-- Untuk bug parser: sumber bank/dompet digital dan format notifikasi sintetis:
+- Versi Expense dan sumber APK (rilis resmi/build sendiri)
+- Versi Android dan model perangkat
+- Untuk bug parser, sumber bank/dompet digital dan format notifikasi sintetis
 
 ## Bukti aman
 
-<!-- Opsional: screenshot/log yang sepenuhnya sintetis. Jangan lampirkan backup atau data keuangan asli. -->
+<!-- Opsional. Screenshot/log yang sepenuhnya sintetis. Jangan lampirkan backup atau data keuangan asli. -->
 
 ## Pemeriksaan
 

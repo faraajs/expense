@@ -101,7 +101,7 @@ private fun RawLogCard(entry: RawLogEntity, fmt: SimpleDateFormat) {
             }
             if (!entry.parseError.isNullOrBlank()) {
                 Text(
-                    "Error: ${entry.parseError}",
+                    "Error · ${entry.parseError}",
                     style = MaterialTheme.typography.labelSmall,
                     color = MaterialTheme.colorScheme.error
                 )

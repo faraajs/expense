@@ -2,7 +2,7 @@ package com.example.autospending.parser
 
 /**
  * Registry of all bank parsers. Finds the first matching parser for a given package name.
- * Order matters: more specific parsers should come before generic ones.
+ * Order matters; more specific parsers should come before generic ones.
  */
 object NotificationParserRegistry {
     private val parsers: List<BaseBankParser> = listOf(

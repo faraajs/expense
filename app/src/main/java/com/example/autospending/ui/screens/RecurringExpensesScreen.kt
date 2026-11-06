@@ -138,7 +138,7 @@ private fun AddRecurringDialog(onDismiss: () -> Unit, onConfirm: (String, Long, 
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedTextField(
                     value = name, onValueChange = { name = it },
-                    label = { Text("Nama (misal: Netflix)") }, modifier = Modifier.fillMaxWidth(), singleLine = true
+                    label = { Text("Nama (misal Netflix)") }, modifier = Modifier.fillMaxWidth(), singleLine = true
                 )
                 OutlinedTextField(
                     value = amount, onValueChange = { amount = it.filter { c -> c.isDigit() } },

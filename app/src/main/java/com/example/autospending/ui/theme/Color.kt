@@ -18,7 +18,7 @@ val TealOnTertiary = Color(0xFFFFFFFF)
 val TealTertiaryContainer = Color(0xFFCFFAFE)
 val TealOnTertiaryContainer = Color(0xFF164E63)
 
-// Money semantics (logo ring: red = out, green = in)
+// Money semantics (logo ring; red = out, green = in)
 val ExpenseRed = Color(0xFFEF4444)
 val ExpenseRedSoft = Color(0x33EF4444)
 val IncomeGreen = Color(0xFF22C55E)

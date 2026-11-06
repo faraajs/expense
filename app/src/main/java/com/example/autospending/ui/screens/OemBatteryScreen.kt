@@ -124,7 +124,7 @@ fun OemBatteryScreen() {
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Panduan lengkap: dontkillmyapp.com ↗")
+            Text("Panduan lengkap · dontkillmyapp.com ↗")
         }
     }
 }

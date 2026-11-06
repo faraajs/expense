@@ -1,15 +1,15 @@
 package com.example.autospending.parser
 
-/** GoPay & Gojek app — both post the same transaction notif, deduplicated via "com.gojek" family. */
+/** GoPay & Gojek app; both post the same transaction notif, deduplicated via "com.gojek" family. */
 class GoPayParser : BaseBankParser() {
     override val packagePrefixes = listOf("com.gojek.gopay", "com.gojek.app")
     override val dedupFamily = "com.gojek"
 
     override fun extractMerchant(raw: String): String? {
-        // GoPay: "bayar Rp3 ke itemku pake GoPay Saldo"
+        // GoPay, e.g. "bayar Rp3 ke itemku pake GoPay Saldo"
         Regex("""(?i)bayar\s+(?:rp|idr)\.?\s*[0-9][0-9.,]*\s+ke\s+([A-Za-z0-9][A-Za-z0-9 ._'&-]{1,40}?)(?:\s+pake|\s+pakai|\s+dengan|\s+via|\s+di|\.|$)""")
             .find(raw)?.groupValues?.getOrNull(1)?.trim()?.let { return it.take(40) }
-        // Fallback: "ke MERCHANT" pattern
+        // Fallback to the "ke MERCHANT" pattern
         Regex("""(?i)ke\s+([A-Za-z0-9][A-Za-z0-9 ._'&-]{2,32})""")
             .find(raw)?.groupValues?.getOrNull(1)?.trim()?.let { return it.take(40) }
         return null
@@ -26,7 +26,7 @@ class SeaBankParser : BaseBankParser() {
     override val packagePrefixes = listOf("id.co.bankbkemobile.digitalbank")
 }
 
-/** Shopee & ShopeePay — same family, deduplicated. */
+/** Shopee & ShopeePay, same family, deduplicated. */
 class ShopeeParser : BaseBankParser() {
     override val packagePrefixes = listOf("com.shopee.id", "com.shopeepay.id")
     override val dedupFamily = "com.shopee"
@@ -61,7 +61,7 @@ class BcaParser : BaseBankParser() {
     override val dedupFamily = "com.bca"
 }
 
-/** BRImo — BRI mobile banking */
+/** BRImo, BRI mobile banking */
 class BrimoParser : BaseBankParser() {
     override val packagePrefixes = listOf("id.co.bri.brimo")
 }

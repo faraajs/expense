@@ -49,7 +49,7 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
         )
         BudgetRing(model = state.budgetRing, ringSize = 180.dp)
         Text(
-            "Status: ${state.budgetStatusLabel}",
+            "Status · ${state.budgetStatusLabel}",
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Medium
         )
@@ -63,7 +63,7 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
         )
         if (budget.any { it.isDigit() }) {
             val preview = budget.filter { it.isDigit() }.toLongOrNull() ?: 0L
-            Text("Preview: ${formatIdr(preview)}", style = MaterialTheme.typography.bodyMedium)
+            Text("Preview · ${formatIdr(preview)}", style = MaterialTheme.typography.bodyMedium)
         }
         Button(
             onClick = {
@@ -76,9 +76,9 @@ fun BudgetScreen(state: AppUiState, onSetBudget: (String) -> Unit) {
         }
         Text("Alert dikirim saat pengeluaran mencapai 80% dan 100% dari budget.")
         if (state.budgetLimit > 0) {
-            Text("Terpakai: ${formatIdr(state.totalExpense)}")
-            Text("Limit: ${formatIdr(state.budgetLimit)}")
-            Text("Sisa: ${formatIdr(state.remainingBudget)}")
+            Text("Terpakai · ${formatIdr(state.totalExpense)}")
+            Text("Limit · ${formatIdr(state.budgetLimit)}")
+            Text("Sisa · ${formatIdr(state.remainingBudget)}")
         }
         Spacer(Modifier.height(24.dp))
     }

@@ -148,7 +148,7 @@ fun AuditScreen(
                     )
                     SettingsRow(
                         title = "Log semua package",
-                        subtitle = "Diagnostik: rekam paket non-whitelist",
+                        subtitle = "Diagnostik · rekam paket non-whitelist",
                         checked = diagnosticLogAll,
                         onCheckedChange = onToggleDiagnosticLog
                     )
@@ -240,11 +240,11 @@ fun AuditScreen(
                         verticalArrangement = Arrangement.spacedBy(6.dp)
                     ) {
                         Text(
-                            "${transaction.sourceTitle} - ${formatIdr(transaction.amount)}",
+                            "${transaction.sourceTitle} · ${formatIdr(transaction.amount)}",
                             fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                            "Confidence ${(conf * 100).toInt()}% ($confLabel) - ${transaction.sourcePackage}"
+                            "Confidence ${(conf * 100).toInt()}% ($confLabel) · ${transaction.sourcePackage}"
                         )
                         Text(transaction.rawText, maxLines = 5, overflow = TextOverflow.Ellipsis)
                     }

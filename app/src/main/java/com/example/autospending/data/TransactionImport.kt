@@ -42,7 +42,7 @@ object TransactionImport {
                 )
             )
         }
-        // Fallback: if structured extract failed but contentHash pattern found, still try loose parse
+        // Fallback when structured extract failed but contentHash pattern found, still try loose parse
         if (out.isEmpty() && block.containsMatchIn(json)) {
             // no-op; caller sees empty
         }

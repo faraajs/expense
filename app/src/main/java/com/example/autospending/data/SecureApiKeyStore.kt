@@ -9,7 +9,7 @@ import androidx.security.crypto.MasterKeys
  * Stores user-pasted Gemini API key only (never shipped in APK).
  * Uses security-crypto 1.0.x [MasterKeys] API.
  *
- * One-time migrates keys from legacy plain SharedPreferences:
+ * One-time migration of keys from legacy plain SharedPreferences.
  * - `auto_spending_prefs` (AppViewModel)
  * - `your_spending_prefs` (older SecureApiKeyStore)
  */
@@ -39,7 +39,7 @@ class SecureApiKeyStore(context: Context) {
         prefs.edit().remove(KEY_API).apply()
     }
 
-    /** Mask for Settings UI: show last 4 only. */
+    /** Mask for Settings UI, showing last 4 only. */
     fun maskedKey(): String? {
         val key = getApiKey().ifBlank { return null }
         if (key.length <= 4) return "••••"

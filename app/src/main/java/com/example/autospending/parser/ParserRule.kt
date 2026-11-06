@@ -45,7 +45,7 @@ data class DirectionKeywords(
         "uang masuk",
         "kredit",
         "credit",
-        // Avoid bare "masuk" — too many false positives on Indonesian copy.
+        // Avoid bare "masuk"; too many false positives on Indonesian copy.
         "saldo masuk",
         "diterima",
         "menerima",
@@ -88,11 +88,11 @@ val defaultIgnorePatterns = listOf(
 )
 
 val defaultMerchantPatterns = listOf(
-    // GoPay: "bayar Rp3 ke itemku pake GoPay Saldo"
+    // GoPay, e.g. "bayar Rp3 ke itemku pake GoPay Saldo"
     Regex("""(?i)bayar\s+(?:rp|idr)\.?\s*[0-9][0-9.,]*\s+ke\s+([A-Za-z0-9][A-Za-z0-9 ._'&-]{1,40}?)(?:\s+pake|\s+pakai|\s+dengan|\s+via|\s+di|\.|$)"""),
-    // SeaBank/Shopee style: "Pembayaran SpayLater kamu" / "Pembayaran MERCHANT kamu"
+    // SeaBank/Shopee style, e.g. "Pembayaran SpayLater kamu" / "Pembayaran MERCHANT kamu"
     Regex("""(?i)Pembayaran\s+([A-Za-z0-9][A-Za-z0-9 ._-]{2,32})\s+kamu"""),
-    // Generic: "di ALFAMART" / "ke BUDI" / "dari ANDI"
+    // Generic, e.g. "di ALFAMART" / "ke BUDI" / "dari ANDI"
     Regex("""(?i)\b(?:di|ke|dari|to|from|at)\s+([A-Za-z0-9][A-Za-z0-9 ._'&-]{2,32})"""),
     Regex("""(?i)\bmerchant[:\s]+([A-Za-z0-9][A-Za-z0-9 ._-]{2,32})""")
 )

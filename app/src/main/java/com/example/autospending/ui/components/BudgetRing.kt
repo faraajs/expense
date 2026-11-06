@@ -111,10 +111,10 @@ fun BudgetRing(
                 }
             }
             val statusText = when (model.status) {
-                BudgetStatus.UNSET -> "Status: Belum diset"
-                BudgetStatus.AMAN -> "Status: Aman"
-                BudgetStatus.HATI_HATI -> "Status: Hati-hati"
-                BudgetStatus.OVER -> "Status: Over"
+                BudgetStatus.UNSET -> "Status · Belum diset"
+                BudgetStatus.AMAN -> "Status · Aman"
+                BudgetStatus.HATI_HATI -> "Status · Hati-hati"
+                BudgetStatus.OVER -> "Status · Over"
             }
             Text(statusText, style = MaterialTheme.typography.bodyMedium)
             model.overPercent?.let {

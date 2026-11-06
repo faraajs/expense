@@ -1,13 +1,13 @@
 # Expense
 
 [![Rilis terbaru](https://img.shields.io/github/v/release/faraajs/expense)](https://github.com/faraajs/expense/releases/latest)
-[![Source: MIT](https://img.shields.io/badge/source-MIT-green.svg)](LICENSE)
+[![Source MIT](https://img.shields.io/badge/source-MIT-green.svg)](LICENSE)
 [![Android 8+](https://img.shields.io/badge/Android-8%2B%20(API%2026)-blue.svg)](docs/BUILD-FROM-SOURCE.md)
 [![Android CI](https://github.com/faraajs/expense/actions/workflows/android.yml/badge.svg)](https://github.com/faraajs/expense/actions/workflows/android.yml)
 
 ## Unduh APK
 
-### [Unduh Expense 0.4.2 — APK universal](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk)
+### [Unduh Expense 0.4.2 (APK universal)](https://github.com/faraajs/expense/releases/download/v0.4.2/expense-v0.4.2-universal.apk)
 
 [Halaman rilis 0.4.2](https://github.com/faraajs/expense/releases/tag/v0.4.2) · [Rilis terbaru](https://github.com/faraajs/expense/releases/latest)
 
@@ -31,10 +31,10 @@ Ledger dan parser dasar berjalan tanpa internet. Gemini memerlukan internet, key
 2. Unduh APK dari tautan di atas. Izinkan pemasangan dari sumber ini untuk browser/pengelola berkas bila Android meminta.
 3. Untuk **0.4.1 → 0.4.2, pasang sebagai pembaruan; jangan uninstall**. Paket tetap `com.example.autospending`, memakai kunci penandatangan asli yang sama, dan skema database Room tetap versi **2** (berbeda dari versi library Room). Uninstall atau hapus data dapat menghilangkan ledger.
 4. Aktifkan **Notification access / Akses notifikasi** untuk Expense agar notifikasi transaksi bisa dibaca. Ini berbeda dari izin menampilkan notifikasi untuk peringatan anggaran.
-5. Pada Android 13+ atau perangkat yang memblokir akses aplikasi sideload: buka **Settings → Apps → Expense → menu tiga titik → Allow restricted settings / Izinkan setelan dibatasi**, lalu aktifkan akses notifikasi. Nama/menu dapat berbeda menurut produsen. Hanya lakukan untuk APK dari sumber yang Anda percaya.
+5. Pada Android 13+ atau perangkat yang memblokir akses aplikasi sideload, buka **Settings → Apps → Expense → menu tiga titik → Allow restricted settings / Izinkan setelan dibatasi**, lalu aktifkan akses notifikasi. Nama/menu dapat berbeda menurut produsen. Hanya lakukan untuk APK dari sumber yang Anda percaya.
 6. Jika pencatatan berhenti di latar belakang, periksa panduan baterai/OEM di aplikasi dan pengaturan pembatasan baterai perangkat.
 
-Jika Android menolak pembaruan karena sertifikat berbeda, jangan uninstall untuk memaksa pemasangan: periksa sumber APK terlebih dahulu. Build sendiri dengan key lain tidak dapat menggantikan APK resmi.
+Jika Android menolak pembaruan karena sertifikat berbeda, jangan uninstall untuk memaksa pemasangan. Periksa sumber APK terlebih dahulu. Build sendiri dengan key lain tidak dapat menggantikan APK resmi.
 
 `applicationId` dan namespace source tetap **`com.example.autospending`**, bukan diganti menjadi nama baru demi branding. Identitas yang sudah dirilis ini menjaga hubungan instalasi dengan data ledger, widget, FileProvider, serta komponen/grant akses notification listener. Nama kelas/paket komponen Android juga dipertahankan; namespace bukan sekadar label aplikasi.
 

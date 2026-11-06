@@ -6,12 +6,12 @@ import java.util.Locale
 /**
  * Base class for all bank/e-wallet parsers.
  * Subclasses define package prefixes and optional custom amount/merchant logic.
- * Credit-first evaluation: if we can't confidently classify direction, we return null (never guess).
+ * Credit-first evaluation; if we can't confidently classify direction, we return null (never guess).
  *
- * Pipeline:
+ * Pipeline.
  *  1. Pre-filter non-transactions (OTP, promo, PIN, etc.)
- *  2. Extract amount — reject if none found
- *  3. Classify direction (credit-first) — reject if ambiguous
+ *  2. Extract amount, reject if none found
+ *  3. Classify direction (credit-first), reject if ambiguous
  *  4. Extract merchant
  *  5. Infer category
  *  6. Compute dedup fingerprint (SHA-256)
@@ -70,7 +70,7 @@ abstract class BaseBankParser {
             .joinToString(" ")
             .trim()
 
-    /** Returns true if this looks like an OTP, promo, marketing, or login notif — never a transaction. */
+    /** Returns true if this looks like an OTP, promo, marketing, or login notif; never a transaction. */
     private fun isNonTransaction(raw: String): Boolean {
         val lower = raw.lowercase(Locale.ROOT)
         return NON_TX_PHRASES.any { lower.contains(it) }
@@ -97,7 +97,7 @@ abstract class BaseBankParser {
         return when {
             creditScore > 0 && creditScore >= debitScore -> "income"
             debitScore > 0 && creditScore == 0 -> "expense"
-            else -> null // ambiguous — never guess
+            else -> null // ambiguous, never guess
         }
     }
 
@@ -143,7 +143,7 @@ abstract class BaseBankParser {
             .trim()
     }
 
-    /** Generic merchant extractor — works for most banks. Subclasses can override. */
+    /** Generic merchant extractor; works for most banks. Subclasses can override. */
     private fun genericMerchant(raw: String): String? {
         val stopWords = setOf(
             "berhasil", "pembayaran", "transaksi", "kamu", "anda", "gopay", "saldo",

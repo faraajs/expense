@@ -14,7 +14,7 @@ import android.util.Log
 class BootCompletedReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val action = intent?.action.orEmpty()
-        Log.i(TAG, "Received $action — requesting NLS rebind")
+        Log.i(TAG, "Received $action, requesting NLS rebind")
         val component = ComponentName(context, SpendingNotificationListenerService::class.java)
         NotificationListenerService.requestRebind(component)
     }

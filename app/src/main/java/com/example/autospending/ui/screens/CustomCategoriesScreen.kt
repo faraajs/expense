@@ -86,7 +86,7 @@ fun CustomCategoriesScreen(
                                     Text("${cat.emoji} ${cat.name}", fontWeight = FontWeight.SemiBold)
                                     if (cat.keywords.isNotBlank()) {
                                         Text(
-                                            "Keywords: ${cat.keywords}",
+                                            "Keywords · ${cat.keywords}",
                                             style = MaterialTheme.typography.bodySmall,
                                             color = MaterialTheme.colorScheme.onSurfaceVariant
                                         )
