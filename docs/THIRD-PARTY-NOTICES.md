@@ -32,7 +32,7 @@ Versi berikut berasal dari deklarasi build dan metadata upstream, bukan laporan 
 | Okio / Okio JVM (OkHttp transitive metadata) | 3.6.0 | Apache-2.0 |
 | Tink Android (Security Crypto transitive metadata) | 1.5.0 | Apache-2.0 |
 | Public Suffix List (data yang dibundel OkHttp) | OkHttp 4.12.0 | MPL-2.0 |
-| Protobuf Java Lite (di-shade ke Tink) | referensi Tink: 3.11.4 | BSD-3-Clause |
+| Protobuf Java Lite (di-shade ke Tink) | referensi Tink 3.11.4 | BSD-3-Clause |
 | Android Gradle Plugin | 9.2.1 | Apache-2.0 |
 | KSP | 2.2.21-2.0.5 | Apache-2.0 |
 | Gradle / Gradle Wrapper | 9.4.1 distribution | Apache-2.0 |
@@ -45,8 +45,8 @@ AndroidX/Compose dikembangkan oleh Android Open Source Project dan kontributor; 
 
 ## Sumber lisensi dan metadata
 
-- [Apache License 2.0 — teks lengkap](https://www.apache.org/licenses/LICENSE-2.0.txt)
-- [Eclipse Public License 1.0 — teks lengkap](https://www.eclipse.org/legal/epl-v10.html)
+- [Apache License 2.0 (teks lengkap)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [Eclipse Public License 1.0 (teks lengkap)](https://www.eclipse.org/legal/epl-v10.html)
 - [AndroidX source/license](https://android.googlesource.com/platform/frameworks/support/+/androidx-main/LICENSE.txt)
 - [Compose BOM 2024.12.01 POM](https://dl.google.com/dl/android/maven2/androidx/compose/compose-bom/2024.12.01/compose-bom-2024.12.01.pom)
 - [Security Crypto 1.0.0 POM](https://dl.google.com/dl/android/maven2/androidx/security/security-crypto/1.0.0/security-crypto-1.0.0.pom)

@@ -43,7 +43,7 @@ object TransactionExport {
             sb.append("""      "confidence": ${tx.confidence},""").append('\n')
             sb.append("""      "contentHash": ${jsonString(tx.contentHash)},""").append('\n')
             sb.append("""      "createdAt": ${tx.createdAt}""").append('\n')
-            // rawText omitted by default — re-export with includeRaw later if needed
+            // rawText omitted by default; re-export with includeRaw later if needed
             sb.append("    }")
             if (index < transactions.lastIndex) sb.append(',')
             sb.append('\n')

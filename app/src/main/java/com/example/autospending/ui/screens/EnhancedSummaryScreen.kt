@@ -197,12 +197,12 @@ fun EnhancedSummaryScreen(
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             Text(day, style = MaterialTheme.typography.bodySmall)
                             Text(
-                                if (expense > 0) formatIdr(expense) else "—",
+                                if (expense > 0) formatIdr(expense) else "",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (expense > 0) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.outline
                             )
                             Text(
-                                if (income > 0) formatIdr(income) else "—",
+                                if (income > 0) formatIdr(income) else "",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = if (income > 0) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
                             )

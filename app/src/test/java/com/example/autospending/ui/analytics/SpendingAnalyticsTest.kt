@@ -53,7 +53,7 @@ class SpendingAnalyticsTest {
 
     @Test
     fun last7DaysOnThirdOfMonthIncludesPriorMonthCalendarDays() {
-        // 2026-03-03 12:00 — must include Feb 25..Mar 3 inclusive (7 days)
+        // 2026-03-03 12:00; must include Feb 25..Mar 3 inclusive (7 days)
         val now = LocalDate.of(2026, 3, 3).atTime(12, 0).atZone(zone).toInstant().toEpochMilli()
         val bounds = rangeBounds(TimeRange.LAST_7_DAYS, now, zone)
         val expectedStart = LocalDate.of(2026, 2, 25).atStartOfDay(zone).toInstant().toEpochMilli()
@@ -133,7 +133,7 @@ class SpendingAnalyticsTest {
             explorationFilterSummary(TimeRange.THIS_MONTH, null, null, null)
         )
         assertEquals(
-            "Rentang: 7 hari · Food · Expense",
+            "Rentang · 7 hari · Food · Expense",
             explorationFilterSummary(TimeRange.LAST_7_DAYS, "Food", "expense", null)
         )
     }

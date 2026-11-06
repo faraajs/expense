@@ -12,9 +12,9 @@ import java.util.Locale
 object AmountParseUtils {
 
     private val AMOUNT_PATTERNS = listOf(
-        // Signed: +Rp55.000 / -Rp10.000
+        // Signed values, e.g. +Rp55.000 / -Rp10.000
         Regex("""(?i)([+-]?)\s*\b(?:rp|idr)\.?\s*([0-9][0-9.,]*)"""),
-        // Trailing: 55.000 Rp / 1.000.000 IDR
+        // Trailing currency, e.g. 55.000 Rp / 1.000.000 IDR
         Regex("""(?i)([+-]?)\s*\b([0-9][0-9.,]*)\s*(?:rp|idr)\b""")
     )
 
@@ -39,7 +39,7 @@ object AmountParseUtils {
     /** Strips Indonesian formatting to extract integer rupiah value. */
     fun normalize(raw: String): String {
         val clean = raw.trim()
-        // Detect decimal comma: ends with ",XX" (2 digits) with a dot before the comma
+        // Detect decimal comma by the ending ",XX" (2 digits) with a dot before the comma
         val decimalComma = clean.lastIndexOf(',').takeIf { it >= 0 }
         val decimalDot = clean.lastIndexOf('.').takeIf { it >= 0 }
         val withoutDecimals = when {

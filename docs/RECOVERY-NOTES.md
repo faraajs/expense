@@ -6,11 +6,11 @@ Repository publik ini memuat source **Expense asli**, bukan UI Lab. Source dipul
 
 ## Referensi asal
 
-- Snapshot utama: stash `26e341d5ccd5a93967c1c9a4a8d2d8f0f7cda957`.
-- Source yang sebelumnya untracked: parent ketiga stash, dengan prefix objek `453d52e`.
-- Referensi VCS APK lama: prefix `598590ee`.
-- APK referensi: Expense 0.4.1, versionCode 16, applicationId `com.example.autospending`.
-- Publikasi baru: 0.4.2, versionCode 17, applicationId yang sama; skema Room tetap versi 2 dan rilis resmi menggunakan signing key asli yang sama.
+- Snapshot utama adalah stash `26e341d5ccd5a93967c1c9a4a8d2d8f0f7cda957`.
+- Source yang sebelumnya untracked adalah parent ketiga stash, dengan prefix objek `453d52e`.
+- Referensi VCS APK lama adalah prefix `598590ee`.
+- APK referensi adalah Expense 0.4.1, versionCode 16, applicationId `com.example.autospending`.
+- Publikasi baru adalah 0.4.2, versionCode 17, applicationId yang sama; skema Room tetap versi 2 dan rilis resmi menggunakan signing key asli yang sama.
 
 Identifier asal tersebut menjelaskan provenance; objek lama tidak harus tersedia dalam repository publik bersih ini. Pemulihan snapshot tidak membuktikan bahwa setiap file cocok dengan source APK referensi, dan **tidak ada klaim rekonstruksi bit-for-bit**. Perubahan toolchain, signing, serta metadata build juga dapat mengubah byte APK.
 
@@ -18,14 +18,14 @@ Identifier asal tersebut menjelaskan provenance; objek lama tidak harus tersedia
 
 Database pengguna, ekspor/cadangan pribadi, signing key, password, API key, dan konfigurasi lokal tidak disertakan. Importer transaksi riwayat pribadi dan enrichment pribadi yang tidak aktif dihapus untuk sanitasi publikasi. Penerimaan key melalui launcher intent dihapus, input key UI dimasking, dan log ingest tidak mencetak payload transaksi. Fitur audit lokal tetap menyimpan log sesuai [kebijakan privasi](PRIVACY.md).
 
-MIT dipilih untuk source asli Expense; notice dan lisensi upstream tetap berlaku seperti dijelaskan pada [third-party notices](THIRD-PARTY-NOTICES.md). Source pemulihan bukan alasan untuk menimpa atau menghapus data instalasi lama: ekspor JSON terlebih dahulu lalu pasang APK resmi sebagai pembaruan, bukan uninstall.
+MIT dipilih untuk source asli Expense; notice dan lisensi upstream tetap berlaku seperti dijelaskan pada [third-party notices](THIRD-PARTY-NOTICES.md). Source pemulihan bukan alasan untuk menimpa atau menghapus data instalasi lama. Ekspor JSON terlebih dahulu lalu pasang APK resmi sebagai pembaruan, bukan uninstall.
 
 ## Verifikasi 0.4.2
 
 - `:app:assembleRelease` berhasil dengan JDK 17, Gradle 9.4.1, dan AGP 9.2.1.
-- 50 unit test lulus, tanpa failure/error/skip: parser, analitik, ekspor, dan impor.
-- APK lolos `apksigner verify`; sertifikat SHA-256 sama dengan APK 0.4.1: `d12d80aacf5249420ed180ab5d73df8c91198361e4a9b2d96a45cad6f6da33aa`.
-- Emulator Android 11 / API 30: memasang 0.4.2 di atas APK 0.4.1 berhasil tanpa uninstall. Dua transaksi sintetis tetap identik untuk setiap kolom; identity hash Room v2 tidak berubah.
+- 50 unit test lulus, tanpa failure/error/skip, yaitu parser, analitik, ekspor, dan impor.
+- APK lolos `apksigner verify`; sertifikat SHA-256 sama dengan APK 0.4.1, yaitu `d12d80aacf5249420ed180ab5d73df8c91198361e4a9b2d96a45cad6f6da33aa`.
+- Pada emulator Android 11 / API 30, memasang 0.4.2 di atas APK 0.4.1 berhasil tanpa uninstall. Dua transaksi sintetis tetap identik untuk setiap kolom; identity hash Room v2 tidak berubah.
 - Key sintetis terenkripsi tetap utuh setelah update. Extra `gemini_api_key` pada warm launch dan `openrouter_api_key` pada cold launch tidak mengubah isi preference terenkripsi.
 - APK diperiksa untuk ketiadaan importer/nama seed pribadi, database, dan keystore; aset lisensi pihak ketiga disertakan.
 - Source hasil `git archive` juga berhasil dibangun dengan `:app:assembleDebug --offline`, tanpa konfigurasi signing lokal.

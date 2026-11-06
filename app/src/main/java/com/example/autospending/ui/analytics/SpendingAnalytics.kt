@@ -102,7 +102,7 @@ fun explorationFilterSummary(
 ): String {
     val parts = mutableListOf<String>()
     if (timeRange != TimeRange.THIS_MONTH) {
-        parts += "Rentang: ${timeRange.displayLabel()}"
+        parts += "Rentang · ${timeRange.displayLabel()}"
     }
     categoryFilter?.let { parts += it }
     typeFilter?.let { parts += it.replaceFirstChar { c -> c.uppercase() } }
@@ -111,9 +111,9 @@ fun explorationFilterSummary(
 }
 
 /**
- * Budget ring semantics — pure; unit-testable.
- * Thresholds default 80/100: AMAN < first, HATI_HATI until 100%, OVER at ≥100%.
- * At exactly 100%: status OVER, center "100%" (not "+0%"); over badge only when rawRatio > 1.
+ * Budget ring semantics, pure and unit-testable.
+ * Thresholds default 80/100, AMAN < first, HATI_HATI until 100%, OVER at ≥100%.
+ * At exactly 100%, status OVER, center "100%" (not "+0%"); over badge only when rawRatio > 1.
  */
 fun budgetRingModel(
     totalExpense: Long,

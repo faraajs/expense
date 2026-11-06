@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * Feature flags and app-level settings.
- * - parsers_enabled: when false, notifications are only logged (Phase 0 safety mode)
- * - diagnostic_log_all_packages: when true, logs ALL notification packages (not just whitelist)
+ * - parsers_enabled. When false, notifications are only logged (Phase 0 safety mode)
+ * - diagnostic_log_all_packages. When true, logs ALL notification packages (not just whitelist)
  */
 class UserSettingsStore(context: Context) {
     private val prefs: SharedPreferences =

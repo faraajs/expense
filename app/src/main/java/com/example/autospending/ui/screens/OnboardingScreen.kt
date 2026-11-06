@@ -59,7 +59,7 @@ fun OnboardingScreen() {
                 "✅ Data hanya tersimpan di HP kamu\n" +
                 "✅ Tidak ada login ke rekening bank\n" +
                 "✅ Tidak ada transaksi yang dilakukan\n" +
-                "✅ Privasi terjaga — tidak ada upload",
+                "✅ Privasi terjaga, tidak ada upload",
             style = MaterialTheme.typography.bodyMedium,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.onSurfaceVariant

@@ -57,9 +57,9 @@ fun TransactionListItem(
                     color = amountColor
                 )
             }
-            Text("${transaction.category} - ${formatDateTime(transaction.occurredAt)}")
+            Text("${transaction.category} · ${formatDateTime(transaction.occurredAt)}")
             Text(
-                "Source: ${transaction.sourcePackage.toFriendlySourceName()}",
+                "Source · ${transaction.sourcePackage.toFriendlySourceName()}",
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

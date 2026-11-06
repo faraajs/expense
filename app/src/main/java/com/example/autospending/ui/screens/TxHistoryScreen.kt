@@ -89,7 +89,7 @@ fun TxHistoryScreen(
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
-                                    "${tx.merchant ?: "—"} · ${tx.category}",
+                                    "${tx.merchant ?: "Tanpa nama"} · ${tx.category}",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
